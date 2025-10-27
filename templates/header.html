@@ -1,0 +1,116 @@
+{% load static %}
+{% load static %}
+
+<!-- HEADER START -->
+<header class="site-header header-style-1 mobile-sider-drawer-menu header-full-width">
+    <div class="sticky-header main-bar-wraper navbar-expand-lg">
+        <div class="main-bar">  
+            <div class="container clearfix"> 
+                
+                <!-- Logo Section Start -->
+                <div class="logo-header">
+                    <div class="logo-header-inner logo-header-one">
+                        <a href="{% url 'home' %}">
+                            <img class="logo-pic-one" src="{% static 'images/logo-light.png' %}" alt="logo">
+                            <img class="logo-pic-two" src="{% static 'images/logo-dark.png' %}" alt="logo">
+                        </a>
+                    </div>
+                </div>  
+                <!-- Logo Section End -->
+
+                <!-- NAV Toggle Button -->
+                <button id="mobile-side-drawer" data-target=".header-nav" data-toggle="collapse" type="button" class="navbar-toggler collapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar icon-bar-first"></span>
+                    <span class="icon-bar icon-bar-two"></span>
+                    <span class="icon-bar icon-bar-three"></span>
+                </button> 
+
+                <!-- MAIN Nav -->
+                <div class="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
+                    <ul class="nav navbar-nav">
+
+                        <li class="has-child current-menu-item"><a href="javascript:;">Home</a>
+                            <ul class="sub-menu">
+                                <li><a href="{% url 'home' %}">Home 1</a></li>
+                                <li><a href="#">Home 2</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-child"><a href="javascript:;">About us</a>
+                            <ul class="sub-menu">
+                                <li><a href="{% url 'about' %}">About Us 1</a></li>
+                                <li><a href="#">About Us 2</a></li>
+                            </ul>                                                                 
+                        </li>
+
+                        <li class="has-child">
+                            <a href="javascript:;">Pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Customer My Account</a></li>
+                                <li><a href="#">Lab Test</a></li>
+                                <li><a href="#">Medicine</a></li>
+                                <li><a href="#">Shop</a></li>
+                                <li><a href="#">Shop Detail</a></li>                                        
+                                <li><a href="#">Booking Form</a></li>
+                                <li><a href="#">404</a></li>
+                                <li><a href="#">Coming Soon</a></li>
+                            </ul>                                
+                        </li>
+
+                        <li class="has-child"><a href="javascript:;">Profile</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Profile 1</a></li>
+                                <li><a href="#">Profile 2</a></li>
+                            </ul>                                                                 
+                        </li>
+
+                        <li class="has-child"><a href="javascript:;">Blog</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Blog Grid</a></li>                                        
+                                <li><a href="#">Blog List</a></li>
+                                <li><a href="#">Blog Detail</a></li>                                        
+                            </ul>                                
+                        </li>
+
+                        <li class="has-child"><a href="javascript:;">Search</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Search List</a></li>
+                                <li><a href="#">Search List Map</a></li>                                        
+                                <li><a href="#">Search Grid View 1</a></li>
+                                <li><a href="#">Search Grid View 2</a></li>
+                                <li><a href="#">Search Grid Map</a></li>
+                                <li><a href="#">Search Grid Map 2</a></li>
+                            </ul>                                
+                        </li>
+
+                        <li class="has-child"><a href="javascript:;">Contact</a>
+                            <ul class="sub-menu">
+                                <li><a href="{% url 'contact' %}">Contact Us 1</a></li>                                        
+                                <li><a href="#">Contact Us 2</a></li>
+                            </ul>                                
+                        </li> 
+                    </ul>
+                </div>
+                        
+                <!-- Header Right Section-->
+                <div class="extra-nav header-2-nav">
+                    <div class="extra-cell">
+
+                        <!--Sign up-->
+                        <a href="{% url 'login' %}" class="site-button-link aon-btn-signup m-l20">
+                            <i class="feather-user"></i> Sign up
+                        </a>
+
+                        <!--Add Listing-->
+                        <a href="{% url 'add_listing' %}" class="site-button aon-add-listing m-l20">
+                            <i class="feather-plus-circle"></i> Add Listing
+                        </a>
+                    </div>
+                </div>                            
+
+            </div>    
+        </div>
+    </div>
+</header>
+<!-- HEADER END -->

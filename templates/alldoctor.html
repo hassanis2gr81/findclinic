@@ -1,0 +1,466 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+        <!-- CONTENT START -->
+        <div class="page-content">
+            
+           
+        <!-- Banner Section -->
+        <section class="aon-banner-wrap">
+            <div class="aon-banner-row">
+                <div class="container">
+                    <div class="row">
+                        <!--Left Section-->
+                        <div class="col-lg-6 aon-banner-colLeft">
+                            <div class="aon-banner-pic">
+                                <img src="{% static 'img/imagesmain/javeed_iqbal.png' %}" alt="Dr. Javeed Iqbal" />
+                            </div>
+                            <div class="aon-banner-bg">
+                                <span class="star-one">+</span>
+                                <span class="star-two animte-pluse2">+</span>
+                                <span class="star-three animte-pluse2">+</span>
+                                <span class="star-four animte-pluse">+</span>
+                            </div>
+                        </div>
+                        <!--Right Section-->
+                        <div class="col-lg-6 aon-banner-colRight d-flex align-items-center">
+                            <div class="aon-banner-right">
+                                <h2 class="aon-banner-heading">Your Trust is Our Greatest <span>Incentive</span>!</h2>
+                                <div class="aon-banner-text">There are many variations of passages of worem Ipsum available, but the majority have suffered alteration in some form,</div>
+                                <div class="aon-banner-bottom">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                          <div class="aon-banner-bot-col d-flex mb-4">
+                                            <div class="aon-banner-bot-icon">
+                                                <img src="{% static 'images/banner/icon1.html' %}" alt=""/>
+                                            </div>
+                                            <div class="aon-banner-bot-text">
+                                                <strong>Doctor</strong>
+                                                <span>Book an appointment</span>
+                                            </div> 
+                                          </div> 
+                                        </div>
+                                        <div class="col-sm-6">
+                                          <div class="aon-banner-bot-col d-flex mb-4">
+                                            <div class="aon-banner-bot-icon">
+                                                <img src="images/banner/icon2.html" alt=""/>
+                                            </div>
+                                            <div class="aon-banner-bot-text">
+                                                <strong>Consult</strong>
+                                                <span>Consult with top doctors</span>
+                                            </div> 
+                                          </div> 
+                                        </div>
+                                        <div class="col-sm-6">
+                                          <div class="aon-banner-bot-col d-flex mb-4">
+                                            <div class="aon-banner-bot-icon">
+                                                <img src="images/banner/icon3.html" alt=""/>
+                                            </div>
+                                            <div class="aon-banner-bot-text">
+                                                <strong>Pharmacy</strong>
+                                                <span>Medicines & health products</span>
+                                            </div> 
+                                          </div> 
+                                        </div>
+                                        <div class="col-sm-6">
+                                          <div class="aon-banner-bot-col d-flex mb-4">
+                                            <div class="aon-banner-bot-icon">
+                                                <img src="images/banner/icon4.html" alt=""/>
+                                            </div>
+                                            <div class="aon-banner-bot-text">
+                                                <strong>Diagnostics</strong>
+                                                <span>Book tests & checkups</span>
+                                            </div> 
+                                          </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner Section End -->  
+        
+        <!-- Search Bar Home Section -->
+        <div class="aon-search1-bar-wrap">
+          <div class="container">
+             <div class="aon-search1-area">
+                 <div class="aon-search1-row">
+                     <ul class="nav aon-search1-tabs d-flex">
+                         <li><a href="#hospital-tab" class="nav-link active" data-bs-toggle="pill"><i class="fa fa-hospital-o"></i> Hospital</a></li>
+                         <li><a href="#doctor-tab" class="nav-link" data-bs-toggle="pill"><i class="fa fa-user-md"></i> Doctor</a></li>
+                         <li><a href="#labs-tab" class="nav-link" data-bs-toggle="pill"><i class="fa fa-thermometer-0"></i> Labs</a></li>
+                     </ul>
+                     
+                     <!-- Tab panes -->
+                    <div class="tab-content">
+                      <div class="tab-pane container active" id="hospital-tab">
+                            <form class="aon-search1-form">
+                                <div class="aon-search1-left">
+                                    <div class="aon-search1-table">
+                                        <div class="aon-search1-col aon-search-col">
+
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-plus-square"></i>
+                                                <label>Action</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Hospital</option>
+                                                    <option>Clinice</option>
+                                                    <option>Doctor</option>
+                                                    <option>Medical</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>Date</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Country</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>Country</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>City</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>City</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Select Location</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+                                            </div>
+                                        </div>                       
+                                    </div> 
+                                </div>
+                                <div class="aon-search1-right">
+                                    <div class="aon-search1-col aon-search-btn">
+                                        <button class="aon-search1-btn site-button" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                      <div class="tab-pane container fade" id="doctor-tab">
+                            <form class="aon-search1-form">
+                                <div class="aon-search1-left">
+                                    <div class="aon-search1-table">
+                                        <div class="aon-search1-col aon-search-col">
+
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-plus-square"></i>
+                                                <label>Action</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Hospital</option>
+                                                    <option>Clinice</option>
+                                                    <option>Doctor</option>
+                                                    <option>Medical</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>Date</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Country</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>Country</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>City</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>City</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Select Location</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+                                            </div>
+                                        </div>                       
+                                    </div> 
+                                </div>
+                                <div class="aon-search1-right">
+                                    <div class="aon-search1-col aon-search-btn">
+                                        <button class="aon-search1-btn site-button" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                      </div>
+                      <div class="tab-pane container fade" id="labs-tab">
+                            <form class="aon-search1-form">
+                                <div class="aon-search1-left">
+                                    <div class="aon-search1-table">
+                                        <div class="aon-search1-col aon-search-col">
+
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-plus-square"></i>
+                                                <label>Action</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Hospital</option>
+                                                    <option>Clinice</option>
+                                                    <option>Doctor</option>
+                                                    <option>Medical</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>Date</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Country</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>Country</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>City</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="aon-search1-col aon-category-col">
+                                            <div class="aon-inputicon-box aon-inputicon-bg">
+                                                <i class="aon-input-icon feather-map-pin"></i>
+                                                <label>City</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option>Select Location</option>
+                                                    <option>India</option>
+                                                    <option>Japan</option>
+                                                    <option>US</option>
+                                                </select>
+                                            </div>
+                                        </div>                       
+                                    </div> 
+                                </div>
+                                <div class="aon-search1-right">
+                                    <div class="aon-search1-col aon-search-btn">
+                                        <button class="aon-search1-btn site-button" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                      </div>
+                    </div>  
+                     
+
+
+
+                  
+                     
+                     
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Search Bar Home Section End--> 
+
+        <!-- Team Section -->
+        <section class="aon-med-team-area aon-med-team-area1 bg-light-gray">
+            <div class="container">
+
+                <!--Title Section Start-->
+            	<div class="section-head center">
+                    <span class="aon-sub-title">Team</span>
+                    <h2 class="aon-title">Top Rated Doctors</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry the standard dummy text ever since the  when an printer took.</p>
+                </div>
+                <!--Title Section End-->
+                    <!--hidd html section -->
+                    <!--
+                <div class="section-content">
+                    <div class="aon-med-team-section">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="aon-med-team">
+                                    <div class="aon-med-team-pic">
+                                        <a href="profile1.html"><img src="{% static 'images/team-2/pic1.jpg' %}" alt="#"></a>
+                                    </div>
+                                    <div class="aon-med-team-info">
+                                        <h4 class="aon-title"><a href="profile1.html">Dr. Marya Smith</a></h4>
+                                        <p class="aon-med-team-discription">MDS - Periodontology and Oral Implantology</p>
+                                        <span class="aon-med-team-position">Dental</span>
+                                        <span class="aon-med-team-location"><i class="feather-map-pin"></i>Georgia, USA</span>
+                                        <div class="aon-df-rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="aon-df-lable">(124)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="aon-med-team">
+                                    <div class="aon-med-team-pic">
+                                        <a href="profile1.html"><img src="images/team-2/pic2.jpg" alt="#"></a>
+                                    </div>
+                                    <div class="aon-med-team-info">
+                                        <h4 class="aon-title"><a href="profile1.html">Dr. Darren Elder</a></h4>
+                                        <p class="aon-med-team-discription">MDS - Periodontology and Oral Implantology</p>
+                                        <span class="aon-med-team-position">Dental</span>
+                                        <span class="aon-med-team-location"><i class="feather-map-pin"></i>Georgia, USA</span>
+                                        <div class="aon-df-rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="aon-df-lable">(124)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="aon-med-team">
+                                    <div class="aon-med-team-pic">
+                                        <a href="profile1.html"><img src="images/team-2/pic3.jpg" alt="#"></a>
+                                    </div>
+                                    <div class="aon-med-team-info">
+                                        <h4 class="aon-title"><a href="profile1.html">Dr. David Chua</a></h4>
+                                        <p class="aon-med-team-discription">MDS - Periodontology and Oral Implantology</p>
+                                        <span class="aon-med-team-position">Dental</span>
+                                        <span class="aon-med-team-location"><i class="feather-map-pin"></i>Georgia, USA</span>
+                                        <div class="aon-df-rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="aon-df-lable">(124)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="aon-med-team">
+                                    <div class="aon-med-team-pic">
+                                        <a href="profile1.html"><img src="images/team-2/pic4.jpg" alt="#"></a>
+                                    </div>
+                                    <div class="aon-med-team-info">
+                                        <h4 class="aon-title"><a href="profile1.html">Dr. Zuliya Wood</a></h4>
+                                        <p class="aon-med-team-discription">MDS - Periodontology and Oral Implantology</p>
+                                        <span class="aon-med-team-position">Dental</span>
+                                        <span class="aon-med-team-location"><i class="feather-map-pin"></i>Georgia, USA</span>
+                                        <div class="aon-df-rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="aon-df-lable">(124)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-addmore-btn-section">
+                            <a href="javascripr:;" class="aon-addplus"><i class="feather-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <!--end html hide section-->
+                    
+                <!--new section doctor ka dynamic-->
+
+                    <section class="section-content">
+                        <div class="aon-med-team-section">
+                            <div class="row" id="doctor-container">
+                            {% for doctor in doctors %}
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="aon-med-team">
+                                        <div class="aon-med-team-pic">
+                                            <a href="{% url 'doctor_detail' doctor.slug %}">
+                                                <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}">
+                                            </a>
+                                        </div>
+                                        <div class="aon-med-team-info">
+                                            <h4 class="aon-title">
+                                                <a href="{% url 'doctor_detail' doctor.slug %}">{{ doctor.name }}</a>
+                                            </h4>
+                                            <p class="aon-med-team-discription">{{ doctor.qualification }}</p>
+                                            <span class="aon-med-team-position">{{ doctor.specialization }}</span>
+                                            <span class="aon-med-team-location"><i class="feather-map-pin"></i> {{ doctor.address }}</span>
+                                            <div class="aon-df-rating">
+                                                {% for i in "12345"|slice:":doctor.rating"|make_list %}
+                                                    <span class="fa fa-star"></span>
+                                                {% endfor %}
+                                                <span class="aon-df-lable">({{ doctor.reviews }})</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <!-- Load More Button -->
+                            <div class="aon-addmore-btn-section text-center">
+                                <a href="javascript:;" id="load-more" class="aon-addplus">
+                                    <i class="feather-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                <!--end section doctor ka dynamic-->
+
+            </div>
+        </section>
+        <!-- Team Section End -->
+{% endblock %}
