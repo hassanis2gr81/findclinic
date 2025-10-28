@@ -9,4 +9,7 @@ urlpatterns = [
     path('add-listing/', views.add_listing, name='add_listing'),
     path('doctor/<slug:slug>/', views.doctor_detail, name='doctor_detail'),
     path('alldoctor/', views.alldoctor, name='alldoctor'),
+    path('listofdoctor/', views.listofdoctor, name='listofdoctor'),
+    
+    
 ]

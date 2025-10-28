@@ -137,6 +137,13 @@ body {
   overflow-x: hidden;
   font-size: 14px;
 }
+
+.sf-search-banner {
+    margin-top: 80px; /* push below nav */
+    position: relative;
+    z-index: 1;
+}
+
 a {
   color: #000;
   outline: 0px none;
