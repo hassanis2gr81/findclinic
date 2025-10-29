@@ -1,0 +1,31 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#id_city').change(function() {
+        var cityId = $(this).val();
+        var clinicSelect = $('#id_clinics');
+
+        clinicSelect.html('<option value="">Loading...</option>');
+
+        $.ajax({
+            url: '/admin/yourappname/doctor/load-clinics/',
+            data: {'city_id': cityId},
+            success: function(data) {
+                clinicSelect.empty();
+                $.each(data, function(index, clinic) {
+                    clinicSelect.append($('<option>', {
+                        value: clinic.id,
+                        text: clinic.name
+                    }));
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

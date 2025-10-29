@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from multiselectfield import MultiSelectField
 
 
 # =====================
@@ -80,6 +81,8 @@ class Service(models.Model):
 # =====================
 # ✅ Doctor Model (Updated)
 # =====================
+
+"""
 class Doctor(models.Model):
     name = models.CharField(max_length=200)
     specialization = models.CharField(max_length=200)
@@ -92,8 +95,8 @@ class Doctor(models.Model):
 
     # 🔗 Relationships
     city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, related_name='doctors')
-    categories = models.ManyToManyField(Category, blank=True, related_name='doctors')
     clinics = models.ManyToManyField(Clinic, blank=True, related_name='doctors')
+    categories = models.ManyToManyField(Category, blank=True, related_name='doctors')
     addresses = models.ManyToManyField(Address, blank=True, related_name='doctors')
     services = models.ManyToManyField(Service, blank=True, related_name='doctors')
 
@@ -111,3 +114,59 @@ class Doctor(models.Model):
 
     def __str__(self):
         return self.name
+
+"""
+"""#### doctor all record"""
+
+class Doctor(models.Model):
+    name = models.CharField(max_length=200)
+    specialization = models.CharField(max_length=200)
+    qualification = models.CharField(max_length=200, default='Unknown')
+    email = models.EmailField(default='unknown@example.com')
+    phone = models.CharField(max_length=15, default='0000000000')
+    image = models.ImageField(upload_to='doctor/', default='doctor/default.jpg')
+    experience_years = models.IntegerField(default=0)
+    description = models.TextField(blank=True, null=True)
+
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, related_name='doctors')
+    clinics = models.ManyToManyField(Clinic, through='DoctorClinic', related_name='doctor_clinics')
+    categories = models.ManyToManyField(Category, blank=True, related_name='doctors')
+    addresses = models.ManyToManyField(Address, blank=True, related_name='doctors')
+    services = models.ManyToManyField(Service, blank=True, related_name='doctors')
+
+    slug = models.SlugField(unique=True, blank=True)
+    rating = models.PositiveSmallIntegerField(default=0)
+    reviews = models.PositiveIntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            from django.utils.text import slugify
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+
+
+class DoctorClinic(models.Model):
+    doctor = models.ForeignKey("Doctor", on_delete=models.CASCADE)
+    clinic = models.ForeignKey("Clinic", on_delete=models.CASCADE)
+
+    DAYS_CHOICES = [
+        ('Mon', 'Monday'),
+        ('Tue', 'Tuesday'),
+        ('Wed', 'Wednesday'),
+        ('Thu', 'Thursday'),
+        ('Fri', 'Friday'),
+        ('Sat', 'Saturday'),
+        ('Sun', 'Sunday'),
+    ]
+    days = MultiSelectField(choices=DAYS_CHOICES, blank=True, null=True)
+
+    start_time = models.TimeField(blank=True, null=True)
+    end_time = models.TimeField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.doctor.name} at {self.clinic.name} ({self.days or 'No days'})"

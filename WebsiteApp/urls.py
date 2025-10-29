@@ -10,6 +10,8 @@ urlpatterns = [
     path('doctor/<slug:slug>/', views.doctor_detail, name='doctor_detail'),
     path('alldoctor/', views.alldoctor, name='alldoctor'),
     path('listofdoctor/', views.listofdoctor, name='listofdoctor'),
-    
-    
+    path('ajax/load-clinics/', views.load_clinics, name='ajax_load_clinics'),
 ]
+    
+    
+

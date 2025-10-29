@@ -388,6 +388,7 @@
                                     </li>                                
 
                                 </ul>
+                                
                                 <div class="tab-content" >
                                     <div class="tab-pane fade show active" id="insurances-tabs" role="tabpanel">
                                         <!-- Insurances List-->
@@ -431,66 +432,24 @@
                                         </div>
                                         <!-- Insurances List End-->
                                     </div>
-                                    <div class="tab-pane fade" id="specializations-tabs" role="tabpanel">
-                                        <!-- article List-->
+                                    <div class="tab-pane fade show active" id="specializations-tabs" role="tabpanel">
                                         <div class="row">
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Humana</div> 
-                                              </div> 
-                                            </div>
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Periodontist</div> 
-                                              </div> 
-                                            </div>
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Implantologist</div> 
-                                              </div> 
-                                            </div>
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Dental Surgeon</div> 
-                                              </div> 
-                                            </div>
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Cosmetic/Aesthetic Dentist</div> 
-                                              </div> 
-                                            </div>
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Preventive Dentistry</div> 
-                                              </div> 
-                                            </div>
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Endodontist</div> 
-                                              </div> 
-                                            </div>
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Orthodontist</div> 
-                                              </div> 
-                                            </div>
-                                            <div class="col-md-4 col-sm-6 col-6 mb-4">
-                                              <div class="aon-insuranc-list">
-                                                    <i class="feather-check"></i>
-                                                    <div class="aon-Specializ-name">Primary Care Dentist</div> 
-                                              </div> 
-                                            </div>
+                                            {% if doctor.services.all %}
+                                                {% for service in doctor.services.all %}
+                                                    <div class="col-md-4 col-sm-6 col-6 mb-4">
+                                                        <div class="aon-insuranc-list">
+                                                            <i class="feather-check"></i>
+                                                            <div class="aon-Specializ-name">{{ service.name }}</div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% else %}
+                                                <p class="text-muted">No services listed for this doctor.</p>
+                                            {% endif %}
                                         </div>
-                                        <!-- article List End-->
                                     </div>
+
+                                            <!-- end all doctor services here-->
                                     <div class="tab-pane fade" id="languages-tabs" role="tabpanel">
                                         <!-- article List-->
                                         <div class="row">

@@ -1,0 +1,4 @@
+.inline-group .tabular tr.form-row {
+    border-bottom: 1px solid #eee;
+}
+.inline-group .tabular th, .inline-group .tabular td { padding: 6px 10px; }

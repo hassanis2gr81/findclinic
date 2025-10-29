@@ -1,14 +1,22 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Doctor, City, Category, Service
+from .models import Doctor, City, Category, Service,Clinic  
 from django.db.models import Q
+from django.http import JsonResponse
+from django.core.paginator import Paginator
 
 def home(request):
     doctors = Doctor.objects.all()
     return render(request, 'index.html', {'doctors': doctors})
 
 def alldoctor(request):
-    doctors = Doctor.objects.all()
-    return render(request, 'alldoctor.html', {'doctors': doctors})
+    doctors = Doctor.objects.all().order_by('id')  # you can customize order
+    paginator = Paginator(doctors, 6)  # Show 6 doctors per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    return render(request, 'search-list-view-1.html', {'page_obj': page_obj})
+
+
 
 """all doctor list here"""
 def listofdoctor(request):
@@ -43,7 +51,7 @@ def listofdoctor(request):
         'selected_service': service_id,
         'search_query': search_query,
     }
-    return render(request, 'listofdoctor.html', context)
+    return render(request, 'search-list-view-1.html', context)
 
 """doctor single page view start"""
 def doctor_detail(request, slug):
@@ -61,3 +69,11 @@ def login_view(request):
 
 def add_listing(request):
     return render(request, 'add_listing.html')
+
+def load_clinics(request):
+    # Accept either 'city' or 'city_id' param (compatibility)
+    city_id = request.GET.get('city') or request.GET.get('city_id')
+    if not city_id:
+        return JsonResponse([], safe=False)
+    clinics = Clinic.objects.filter(city_id=city_id).values('id', 'name')
+    return JsonResponse(list(clinics), safe=False)
