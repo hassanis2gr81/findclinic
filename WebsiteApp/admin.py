@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from .models import City, Clinic, Category, Address, Service, Doctor, DoctorClinic
+from .models import City, Clinic, Category, Address, Service, Doctor, DoctorClinic,Blog
 
 # --------------------
 # City Admin
@@ -126,3 +126,15 @@ class DoctorAdmin(admin.ModelAdmin):
             instance.doctor = form.instance  # reattach doctor explicitly
             instance.save()
         formset.save_m2m()  # Save M2M fields
+
+
+# --------------------
+# Blog admin
+# --------------------
+
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'created_at', 'is_published')
+    prepopulated_fields = {"slug": ("title",)}
+    search_fields = ('title', 'author')
+    list_filter = ('is_published', 'created_at')

@@ -479,151 +479,30 @@
                 <div class="section-content">
                         <div class="aon-med-srv-cat-section">
                            <ul class="justify-content-center">
+                            {% for category in categories|slice:":10" %}
                                <li>
                                    <!--one-->
                                    <div class="aon-med-sevices-cat aon-icon-effect">
                                        <div class="media">
                                            <span class="aon-icon">
-                                               <img src="images/s-category/1.png" alt="">
+                                            {% if category.image %}
+                                               <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                                            {% else %}
+                                                <img src="{% static 'images/default-category.png' %}" alt="{{ category.name }}">
+                                            {% endif %}
                                            </span>
                                        </div>
                                        <div class="aon-med-serices-cat-info">
-                                           <h4><a href="javascript:;">Primary Care</a></h4>
-                                           <p>24 listing</p>
+                                           <h4><a href="{% url 'doctors_by_city_and_category' 'lahore' category.slug %}">{{ category.name }}</a></h4>
+                                           <p>{{ category.doctors.count }} listings</p>
                                        </div>
                                    </div>
                                </li>
-                               <li>
-                                    <!--two-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/2.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">Cardiology</a></h4>
-                                            <p>27 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--three-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/3.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">MRI Resonance</a></h4>
-                                            <p>47 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--four-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/4.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">Blood Test</a></h4>
-                                            <p>32 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--five-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/5.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">Laboratory</a></h4>
-                                            <p>45 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--six-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/6.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">Dentistry</a></h4>
-                                            <p>78 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--seven-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/7.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">X-Ray</a></h4>
-                                            <p>45 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--eight-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/8.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">Piscologist</a></h4>
-                                            <p>35 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--nine-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/9.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">Chiropractor</a></h4>
-                                            <p>78 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--ten-->
-                                    <div class="aon-med-sevices-cat aon-icon-effect">
-                                        <div class="media">
-                                            <span class="aon-icon">
-                                                <img src="images/s-category/10.png" alt="">
-                                            </span>
-                                        </div>
-                                        <div class="aon-med-serices-cat-info">
-                                            <h4><a href="javascript:;">Pediatrician</a></h4>
-                                            <p>41 listing</p>
-                                        </div>
-                                    </div>
-                                </li>
-                               
+                               {% endfor %}
                            </ul> 
                         </div>
                         <div class="aon-addmore-btn-section">
-                            <a href="javascripr:;" class="aon-addplus"><i class="feather-plus"></i></a>
+                            <a href="{% url 'all_categories' %}" class="aon-addplus"><i class="feather-plus"></i></a>
                         </div>
                     </div>
             </div>
@@ -649,7 +528,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="aon-med-working aon-icon-effect">
                                 <div class="media">
-                                    <span><img class="aon-icon" src="images/working-icon/1.png" alt=""></span>
+                                    <span><img class="aon-icon" src="{% static 'images/working-icon/1.png' %}" alt=""></span>
                                 </div>
                                 <div class="aon-med-working-info">
                                     <h4>Find a Local Physiotherapist</h4>
@@ -660,7 +539,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="aon-med-working aon-icon-effect">
                                 <div class="media">
-                                    <span><img class="aon-icon" src="images/working-icon/2.png" alt=""></span>
+                                    <span><img class="aon-icon" src="{% static 'images/working-icon/2.png' %}" alt=""></span>
                                 </div>
                                 <div class="aon-med-working-info">
                                     <h4>Choose Your Schedule</h4>
@@ -671,7 +550,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="aon-med-working aon-icon-effect">
                                 <div class="media">
-                                    <span><img class="aon-icon" src="images/working-icon/3.png" alt=""></span>
+                                    <span><img class="aon-icon" src="{% static 'images/working-icon/3.png' %}" alt=""></span>
                                 </div>
                                 <div class="aon-med-working-info">
                                     <h4>Make a Payment</h4>
@@ -694,16 +573,16 @@
                 <!--Title Section Start-->
                 <div class="section-head center white">
                     <span class="aon-sub-title">Registration</span>
-                    <h2 class="aon-title">Want to Make an Appointment Easily</h2>
+                    <h2 class="aon-title">Want to Make an Member Easily</h2>
                     <p>Regain your health and mobility. Leave your pain behind. Do the things you love. 
                         Our team of health professionals is dedicated to providing you with the best medical solutions for your injury or condition. Our specialists collaborate to find pain treatments </p>
-                        <a href="booking-form.html" class="site-button">Book Now</a>
+                        <a href="{% url 'doctor_login' %}" class="site-button">Register Now</a>
                 </div>
                 <!--Title Section End-->
                 <div class="section-content">
                    
                     <div class="media animate-v">
-                        <img src="images/heart.html" alt="">
+                        <img src="{% static 'img/imagesmain/heart.png' %}" alt="">
                     </div>
                    
                 </div>
@@ -723,7 +602,7 @@
                                 <div class="aon-med-help-media shine-hover">
                                     <div class="media curve-left animate-curve">
                                         <div class="shine-box zoom-box">
-                                            <img src="images/large-pic1.html" alt="">
+                                            <img src="{% static 'img/imagesmain/sania.png' %}" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -756,7 +635,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="aon-med-static-section aon-icon-effect">
                                 <div class="media">
-                                    <span class="aon-icon"><img src="images/statics-icon/1.png" alt="#"></span>
+                                    <span class="aon-icon"><img src="{% static 'images/statics-icon/1.png' %}" alt="#"></span>
                                 </div>
                                 <div class="counter-area"><span class="counter">432</span>+</div>
                                 <div class="aon-med-static-name">Doctor</div>
@@ -766,7 +645,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="aon-med-static-section aon-icon-effect">
                                 <div class="media">
-                                    <span class="aon-icon"><img src="images/statics-icon/2.png" alt="#"></span>
+                                    <span class="aon-icon"><img src="{% static 'images/statics-icon/2.png' %}" alt="#"></span>
                                 </div>
                                 <div class="counter-area"><span class="counter">127</span>+</div>
                                 <div class="aon-med-static-name">Customers</div>
@@ -776,7 +655,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="aon-med-static-section  aon-icon-effect">
                                 <div class="media">
-                                    <span class="aon-icon"><img src="images/statics-icon/3.png" alt="#"></span>
+                                    <span class="aon-icon"><img src="{% static 'images/statics-icon/3.png' %}" alt="#"></span>
                                 </div>
                                 <div class="counter-area"><span class="counter">752</span>+</div>
                                 <div class="aon-med-static-name">Hospital</div>
@@ -786,7 +665,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="aon-med-static-section  aon-icon-effect">
                                 <div class="media">
-                                    <span class="aon-icon"><img src="images/statics-icon/4.png" alt="#"></span>
+                                    <span class="aon-icon"><img src="{% static 'images/statics-icon/4.png' %}" alt="#"></span>
                                 </div>
                                 <div class="counter-area"><span class="counter">432</span>+</div>
                                 <div class="aon-med-static-name">Labs</div>
@@ -932,7 +811,7 @@
                                 <div class="aon-med-help-media shine-hover">
                                     <div class="media curve-right animate-curve">
                                         <div class="shine-box zoom-box">
-                                            <img src="images/large-pic2.html" alt="">
+                                            <img src="{% static 'images/large-pic2.html' %}" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -961,9 +840,9 @@
 				<div class="section-content">
                     <div class="aon-testimonial-contaent-wrap">
                         <div class="aon-testimonial-left">
-                            <span class="circle-pic-l-3 animate-v2"><img src="images/testimonial-img/img3.html" alt=""></span>
-                            <span class="circle-pic-l-1 animate-v3"><img src="images/testimonial-img/img1.html" alt=""></span>
-                            <span class="circle-pic-l-2 animate-v2"><img src="images/testimonial-img/img2.html" alt=""></span>
+                            <span class="circle-pic-l-3 animate-v2"><img src="{% static 'images/testimonial-img/img3.html' %}" alt=""></span>
+                            <span class="circle-pic-l-1 animate-v3"><img src="{% static 'images/testimonial-img/img1.html' %}" alt=""></span>
+                            <span class="circle-pic-l-2 animate-v2"><img src="{% static 'images/testimonial-img/img2.html' %}" alt=""></span>
                             <span class="circle-pic-l-4 animate-v3"></span>
                         </div>
                         <div class="aon-med-testimonial-mid">
@@ -982,39 +861,13 @@
                                     </div>
                                 
                                 </div>
-                                <!-- COLUMNS 2 -->
-                                <div class="item">
-                                    
-                                    <div class="aon-med-testimonial-1 text-center">
-                                        
-                                        <div class="aon-testimonial-quote"><i class="fa fa-plus"></i></div>
-                                        <p>Best service are provide us. simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make specimen</p>
-                                        
-                                        <div class="aon-testimonial-name">David Chua</div>
-                                        <div class="aon-testimonial-position">Designer</div>
-                                    </div>
-                                
-                                </div>
-                                <!-- COLUMNS 3 -->
-                                <div class="item">
-                                    
-                                    <div class="aon-med-testimonial-1 text-center">
-                                        
-                                        <div class="aon-testimonial-quote"><i class="fa fa-plus"></i></div>
-                                        <p>Best service are provide us. simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make specimen</p>
-                                        
-                                        <div class="aon-testimonial-name">Darren Elder</div>
-                                        <div class="aon-testimonial-position">Designer</div>
-                                    </div>
-                                
-                                </div>
                                 
                             </div>
                         </div>
                         <div class="aon-testimonial-right">
-                            <span class="circle-pic-r-3 animate-v2"><img src="images/testimonial-img/r-img3.png" alt=""></span>
-                            <span class="circle-pic-r-1 animate-v2"><img src="images/testimonial-img/r-img1.png" alt=""></span>
-                            <span class="circle-pic-r-2 animate-v2"><img src="images/testimonial-img/r-img2.png" alt=""></span>
+                            <span class="circle-pic-r-3 animate-v2"><img src="{% static 'images/testimonial-img/r-img3.png' %}" alt=""></span>
+                            <span class="circle-pic-r-1 animate-v2"><img src="{% static 'images/testimonial-img/r-img1.png' %}" alt=""></span>
+                            <span class="circle-pic-r-2 animate-v2"><img src="{% static 'images/testimonial-img/r-img2.png' %}" alt=""></span>
                             <span class="circle-pic-r-4 animate-v2"></span>
                         </div>
                     </div>
@@ -1024,133 +877,15 @@
 			</div>
 		</div>
 		<!-- Testimonial Section End -->
-            
+           
+        <!--star product section-->
+
          <!-- Product Section -->
-		<div class="aon-med-shop-area">
-			<div class="container">
-				<!--Title Section Start-->
-                <div class="section-head center">
-                    <span class="aon-sub-title">Shop</span>
-                    <h2 class="aon-title">Our Products</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry the standard dummy text ever since the  when an printer took.</p>
-                </div>
-                <!--Title Section End-->
-			
 
-				<div class="section-content">
-                    <div class="owl-carousel shop-style1-slider aon-owl-arrow">
-                        <!--block 1-->
-                        <div class="item">
-                            <div class="ser-shop-style1-box  ser-shine-hover animate" data-animate="zoomIn" data-duration="1.0s" data-delay="0.1s" data-offset="100">
-                                <div class="ser-shop-media">
-                                    <a href="shop-detail.html"><img src="images/shop2/pic1.jpg" alt=""></a>
-                                    <span class="bedge">New</span>
-                                    <ul class="shop-item-controls">
-                                        <li><a href="javascript:;"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="ser-shop-info">
-                                    <h4 class="ser-shop-title"><a href="shop-detail.html">Clutch Bag</a></h4>
-                                    <div class="ser-pro-item-price">
-                                        <strong>$299.00</strong><span>289.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--block 2-->
-                        <div class="item">
-                            <div class="ser-shop-style1-box  ser-shine-hover animate" data-animate="zoomIn" data-duration="1.0s" data-delay="0.1s" data-offset="100">
-                                <div class="ser-shop-media">
-                                    <a href="shop-detail.html"><img src="images/shop2/pic2.jpg" alt=""></a>
-                                    <span class="bedge disabled">New</span>
-                                    <ul class="shop-item-controls">
-                                        <li><a href="javascript:;"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>                                        
-                                </div>
-                                <div class="ser-shop-info">
-                                    <h4 class="ser-shop-title"><a href="shop-detail.html">Clutch Bag</a></h4>
-                                    <div class="ser-pro-item-price">
-                                        <strong>$299.00</strong><span>289.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--block 3-->
-                        <div class="item">
-                            <div class="ser-shop-style1-box  ser-shine-hover animate" data-animate="zoomIn" data-duration="1.0s" data-delay="0.1s" data-offset="100">
-                                <div class="ser-shop-media">
-                                    <a href="shop-detail.html"><img src="images/shop2/pic3.jpg" alt=""></a>
-                                    <span class="bedge">New</span>
-                                    <ul class="shop-item-controls">
-                                        <li><a href="javascript:;"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>                                        
-                                </div>
-                                <div class="ser-shop-info">
-                                    <h4 class="ser-shop-title"><a href="shop-detail.html">Clutch Bag</a></h4>
-                                    <div class="ser-pro-item-price">
-                                        <strong>$299.00</strong><span>289.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--block 4-->
-                        <div class="item">
-                            <div class="ser-shop-style1-box  ser-shine-hover animate" data-animate="zoomIn" data-duration="1.0s" data-delay="0.1s" data-offset="100">
-                                <div class="ser-shop-media">
-                                    <a href="shop-detail.html"><img src="images/shop2/pic4.jpg" alt=""></a>
-                                    <span class="bedge disabled">New</span>
-                                    <ul class="shop-item-controls">
-                                        <li><a href="javascript:;"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>                                        
-                                </div>
-                                <div class="ser-shop-info">
-                                    <h4 class="ser-shop-title"><a href="shop-detail.html">Clutch Bag</a></h4>
-                                    <div class="ser-pro-item-price">
-                                        <strong>$299.00</strong><span>289.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--block 5-->
-                        <div class="item">
-                            <div class="ser-shop-style1-box  ser-shine-hover animate" data-animate="zoomIn" data-duration="1.0s" data-delay="0.1s" data-offset="100">
-                                <div class="ser-shop-media">
-                                    <a href="shop-detail.html"><img src="images/shop2/pic3.jpg" alt=""></a>
-                                    <span class="bedge">New</span>
-                                    <ul class="shop-item-controls">
-                                        <li><a href="javascript:;"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
-                                        <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>                                        
-                                </div>
-                                <div class="ser-shop-info">
-                                    <h4 class="ser-shop-title"><a href="shop-detail.html">Clutch Bag</a></h4>
-                                    <div class="ser-pro-item-price">
-                                        <strong>$299.00</strong><span>289.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                            
-
-                    </div>
-				</div>
-
-			</div>
-		</div>
+        
 		<!-- Product Section End -->              
             
+        <!--end product section-->
 		<!-- Latest Blog -->
         <section class="aon-med-blog-area">
             <div class="container">

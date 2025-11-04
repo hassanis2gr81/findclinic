@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Dashboard | FindClinic</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/feather.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-wraper">
+        <!-- HEADER -->
+        <header class="site-header header-style-1">
+            <div class="container d-flex justify-content-between align-items-center py-3">
+                <a href="{% url 'home' %}" class="navbar-brand">
+                    <img src="{% static 'images/logo-dark.png' %}" alt="logo" height="40">
+                </a>
+                <div>
+                    <span class="me-3 text-primary fw-bold">Welcome, {{ user.username }}</span>
+                    <a href="{% url 'doctor_logout' %}" class="btn btn-danger btn-sm">Logout</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN DASHBOARD -->
+        <div class="container my-5">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0 rounded-3">
+                        <div class="card-body text-center">
+                            <img src="{% static 'images/banner2/doctor.png' %}" class="img-fluid rounded-circle mb-3" width="100">
+                            <h5>{{ user.username|title }}</h5>
+                            <p class="text-muted mb-1">Doctor Account</p>
+                            <hr>
+                            <ul class="list-unstyled text-start">
+                                <li><a href="{% url 'doctor_profile_edit' %}" class="d-block py-2"><i class="fa fa-user me-2 text-primary"></i>Profile Details</a></li>
+                                <li><a href="{% url 'doctor_clinic_add' %}" class="d-block py-2"><i class="fa fa-hospital-o me-2 text-primary"></i>My Clinics</a></li>
+                                <li><a href="#" class="d-block py-2"><i class="fa fa-stethoscope me-2 text-primary"></i>Services</a></li>
+                                <li><a href="#" class="d-block py-2"><i class="fa fa-cogs me-2 text-primary"></i>Settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-md-9">
+                    <div class="card shadow-sm border-0 rounded-3">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="fa fa-dashboard me-2"></i>Dashboard Overview</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-3">Welcome to your dashboard, <strong>{{ user.username }}</strong>!</p>
+                            <p>Here you can manage your profile, add clinics, update your city, and more.</p>
+
+                            <div class="row mt-4">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card text-center border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <i class="fa fa-user-md fa-2x text-primary mb-2"></i>
+                                            <h6>My Profile</h6>
+                                            <p class="text-muted small">Edit personal info</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card text-center border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <i class="fa fa-hospital-o fa-2x text-success mb-2"></i>
+                                            <h6>My Clinics</h6>
+                                            <p class="text-muted small">Manage clinics & cities</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card text-center border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <i class="fa fa-calendar fa-2x text-warning mb-2"></i>
+                                            <h6>Appointments</h6>
+                                            <p class="text-muted small">View patient bookings</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+                            <p class="text-muted small mb-0">Last login: {{ user.last_login }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="text-center py-4 bg-light mt-5">
+            <p class="mb-0">&copy; 2025 FindClinic — All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

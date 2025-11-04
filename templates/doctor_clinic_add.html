@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Clinic | Doctor Dashboard</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h3>Add Clinic</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>City</label>
+            <select name="city" class="form-select" required>
+                <option value="">-- Select City --</option>
+                {% for city in cities %}
+                <option value="{{ city.id }}">{{ city.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Clinic</label>
+            <select name="clinic" class="form-select" required>
+                <option value="">-- Select Clinic --</option>
+                {% for clinic in clinics %}
+                <option value="{{ clinic.id }}">{{ clinic.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Clinic</button>
+        <a href="{% url 'doctor_dashboard' %}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+</body>
+</html>

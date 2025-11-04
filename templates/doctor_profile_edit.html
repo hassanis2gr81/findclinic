@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile | Doctor Dashboard</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h3>Edit Profile</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" value="{{ doctor.name }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Specialization</label>
+            <input type="text" name="specialization" value="{{ doctor.specialization }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Phone</label>
+            <input type="text" name="phone" value="{{ doctor.phone }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Experience (Years)</label>
+            <input type="number" name="experience_years" value="{{ doctor.experience_years }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Description</label>
+            <textarea name="description" class="form-control">{{ doctor.description }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{% url 'doctor_dashboard' %}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+</body>
+</html>

@@ -29,14 +29,26 @@
                 <!-- MAIN Nav -->
                 <div class="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
                     <ul class="nav navbar-nav">
-
-                        <li class="has-child current-menu-item"><a href="javascript:;">Home</a>
+                        <li class="has-child current-menu-item">
+                            <a href="{% url 'alldoctor' %}">Doctor</a>
                             <ul class="sub-menu">
-                                <li><a href="{% url 'home' %}">Home 1</a></li>
-                                <li><a href="#">Home 2</a></li>
+                                {% for category in categories %}
+                                    <li><a href="{% url 'doctors_by_city_and_category' 'lahore' category.slug %}">
+                                        {{ category.name }}
+                                    </a></li>
+                                {% endfor %}
                             </ul>
                         </li>
+                        </li>
+                        <li class="has-child current-menu-item"><a href="{% url 'clinic' %}">Clinic</a>
+                        </li>
+                        <li class="has-child current-menu-item"><a href="{% url 'blog' %}">Blog</a>
+                        </li>
 
+
+
+                        <!-- END EXTRA MENU CODE USE FOR FUTUTE-->
+                        <!--
                         <li class="has-child"><a href="javascript:;">About us</a>
                             <ul class="sub-menu">
                                 <li><a href="{% url 'about' %}">About Us 1</a></li>
@@ -90,6 +102,11 @@
                                 <li><a href="#">Contact Us 2</a></li>
                             </ul>                                
                         </li> 
+                        -->
+                        <!-- END EXTRA MENU CODE USE FOR FUTUTE-->
+
+
+
                     </ul>
                 </div>
                         
@@ -98,13 +115,13 @@
                     <div class="extra-cell">
 
                         <!--Sign up-->
-                        <a href="{% url 'login' %}" class="site-button-link aon-btn-signup m-l20">
-                            <i class="feather-user"></i> Sign up
+                        <a href="{% url 'doctor_login' %}" class="site-button-link aon-btn-signup m-l20">
+                            <i class="feather-user"></i> Patient Login/Signup
                         </a>
 
                         <!--Add Listing-->
-                        <a href="{% url 'add_listing' %}" class="site-button aon-add-listing m-l20">
-                            <i class="feather-plus-circle"></i> Add Listing
+                        <a href="{% url 'doctor_login' %}" class="site-button aon-add-listing m-l20">
+                            <i class="feather-plus-circle"></i> Join as a Doctor
                         </a>
                     </div>
                 </div>                            

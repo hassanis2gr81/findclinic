@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="section-content">
+    <div class="container">
+        <h2 class="text-center mb-4">All Categories</h2>
+        <div class="row">
+            {% for category in categories %}
+            <div class="col-md-3 text-center mb-4">
+                <div class="aon-med-sevices-cat aon-icon-effect">
+                    <div class="media">
+                        {% if category.image %}
+                            <img src="{{ category.image.url }}" alt="{{ category.name }}" style="width:100px;height:100px;">
+                        {% else %}
+                            <img src="{% static 'images/default-category.png' %}" alt="{{ category.name }}" style="width:100px;height:100px;">
+                        {% endif %}
+                    </div>
+                    <div class="aon-med-serices-cat-info">
+                        <h4><a href="#">{{ category.name }}</a></h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
