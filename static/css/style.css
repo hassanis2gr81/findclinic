@@ -8461,8 +8461,8 @@ flex-wrap: wrap; align-items: center; justify-content: center; }
 }
 
 @media only screen and (max-width:1440px){
-.aon-login-left { width:calc(100% - 500px); }
-.aon-login-right { width: 500px; }
+.aon-login-left { width:calc(100% - 638px); }
+.aon-login-right { width: 620px; }
 }
 @media only screen and (max-width:1366px){
 .aon-login-heading .aon-login-text { font-size:40px; }

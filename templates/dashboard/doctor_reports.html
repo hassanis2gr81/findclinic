@@ -1,0 +1,157 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% load static %}
+{% block sidebar %}
+    {% if request.user.is_doctor %}
+        {% include "dashboard/dashboard_sidebar_doctor.html" %}
+    {% else %}
+        {% include "dashboard/dashboard_sidebar_patient.html" %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id="content">
+
+            <div class="content-admin-main">
+                
+                
+            	<div class="aon-admin-heading d-flex justify-content-between">
+                    <div class="aon-admin-heading-left">
+                        <h3>Doctor Report</h3>
+                        <p>Sandhya Dental Clinic</p>
+                    </div>
+                    <div class="aon-admin-heading-right">
+                        <button class="admin-button"><i class="fa fa-print"></i></button>
+                        <button class="admin-button"><i class="fa fa-envelope-o"></i></button>
+                    </div>
+                </div> 
+                
+                <div class="card aon-card">
+                    <div class="card-body aon-card-body">
+
+                        <div class="card-reg-form">
+                            <div class="card-reg-form-lr-wrap">
+                                <div class="card-reg-form-left">
+                                    
+                                </div>
+                                <div class="card-reg-form-right">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="20 April 2022">
+                                            <input type="text" class="form-control" placeholder="20 May 2022 ">
+                                            <span class="input-group-text" id="basic-addon2"><i class="fa fa-angle-down"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div>
+                            <h4>Advanced Filters</h4>
+                            <div class="row">
+
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Doctors</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option>General Physicians</option>
+                                            <option>Pediatricians</option>
+                                            <option>General Surgeon</option>
+                                            <option>Cardiologist</option>
+                                            <option>Dentist</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Procedure Categories</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option>Select Procedure Categories</option>
+                                            <option>Appendix surgery </option>
+                                            <option>Shunt for dialysis </option>
+                                            <option>Breast surgerys</option>
+                                            <option>Cardiac surgery </option>
+                                            <option>Minor Diagnostic</option>
+                                          </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Patient Groups</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option>Select Patient Groups</option>
+                                            <option>AGE Platform Europe (AGE)</option>
+                                            <option>Alzheimer Europe (AE)</option>
+                                            <option>Canadian Arthritis Patient Alliance (CAPA)</option>
+                                            <option>Citadinanza attiva</option>
+                                            <option>DEBRA International</option>
+                                          </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Cancelled</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option>No</option>
+                                            <option>Yes</option>
+                                          </select>
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                
+
+
+                <div class="card-cost-section-wrap">
+                    <div class="card-cost-section-block">
+                        <ul>
+                            <li>
+                                <div class="card-cost-inner">
+                                    <span>Cost ($)</span>
+                                    <h2 class="sf-title">0.00</h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card-cost-inner">
+                                    <span>Discount ($)</span>
+                                    <h2 class="sf-title">0.00</h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card-cost-inner">
+                                    <span>Income After Discount ($)</span>
+                                    <h2 class="sf-title">0.00</h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card-cost-inner">
+                                    <span>Tax ($)</span>
+                                    <h2 class="sf-title">0.00</h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card-cost-inner">
+                                    <span>Invoice Amount ($)</span>
+                                    <h2 class="sf-title">0.00</h2>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+           
+ 
+            </div>
+            
+            
+    	</div>
+{% endblock %}
