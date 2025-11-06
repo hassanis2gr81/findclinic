@@ -3625,7 +3625,7 @@ select {
 
 #sidebar-admin-wraper {  width: 250px; position: fixed; bottom: 0; left: 0; height:100%; z-index:999; background:#fff; border-right:1px solid #e8edf1;  color: #fff; transition: all 0.3s; padding-top:0px; }
 #sidebar-admin-wraper.active {    margin-left: -250px;}
-#content { width: calc(100% - 250px);  padding-top:70px;  min-height: 100vh;  transition: all 0.3s;  position: absolute;   top: 0;  right: 0;  background-color:#f8f9fb; }
+#content { width: calc(100% - 127px);  padding-top:70px;  min-height: 100vh;  transition: all 0.3s;  position: absolute;   top: 0;  right: 0;  background-color:#f8f9fb; }
 #content.active { width: 100%; }
 
 @media (max-width:991px) {
@@ -5654,7 +5654,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#478165', end
   .sf-ques-ans-body{padding-left: 0px;}
 }
 
-.section-head.center{text-align: center; margin: 0px auto 60px; max-width: 650px;}
+.section-head.center{text-align: center; margin: 0px auto 0px auto; max-width: 650px;}
 @media only screen and (max-width:991px){
   .section-head.center .aon-title{
     font-size: 30px;
@@ -6154,7 +6154,7 @@ transition: all 0.5s ease;}
 
 
 /*Testimonial*/
-.aon-med-testimonial-area{padding: 90px 0px;}
+.aon-med-testimonial-area{padding: 65px 0px;}
 .aon-testimonial-contaent-wrap{position: relative;}
 @media only screen and (max-width:991px) {
   .aon-med-testimonial-area{padding: 30px 0px;}

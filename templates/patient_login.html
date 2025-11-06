@@ -1,0 +1,362 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<!-- Mirrored from aonetheme.com/mfine/login-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2025 05:27:45 GMT -->
+<head>
+
+	<!-- META -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />    
+    <meta name="description" content="" />
+    
+    <!-- FAVICONS ICON -->
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="shortcut icon" type="{% static 'image/x-icon' %}" href="images/favicon.png" />
+    
+    <!-- PAGE TITLE HERE -->
+    <title>Mfine Template | Login Page</title>
+    
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+    
+    <!-- BOOTSTRAP STYLE SHEET -->
+    <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- FONTAWESOME STYLE SHEET -->
+    <link  href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- Feather STYLE SHEET -->
+    <link href="{% static 'css/feather.css' %}" rel="stylesheet">
+
+    <!-- Font STYLE SHEET -->
+    <link href="{% static 'css/font.css' %}" rel="stylesheet">    
+    <!-- OWL CAROUSEL STYLE SHEET -->
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+    <!-- SLICK CAROUSEL STYLE SHEET -->
+    <link href="{% static 'css/slick.min.css' %}" rel="stylesheet">
+    <!-- SLICK STYLE SHEET -->
+    <link href="{% static 'css/slick-theme.css' %}" rel="stylesheet">
+    <!-- Custome scrollbar STYLE SHEET  -->
+    <link href="{% static 'css/jquery.scrollbar.css' %}" rel="stylesheet">  
+    <!-- DropZone STYLE SHEET  --> 
+    <link href="{% static 'css/dropzone.css' %}" rel="stylesheet">       
+    <!-- MAGNIFIC POPUP STYLE SHEET -->
+    <link href="{% static 'css/magnific-popup.min.css' %}" rel="stylesheet">
+    <!-- FLATICON STYLE SHEET -->
+    <link href="{% static 'css/flaticon.min.css' %}" rel="stylesheet">
+    <!-- Lc light box popup -->
+    <link href="{% static 'css/lc_lightbox.css' %}" rel="stylesheet">     
+    <!-- Price Range Slider -->
+    <link href="{% static 'css/bootstrap-slider.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap-toggle -->
+    <link href="{% static 'css/bootstrap4-toggle.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap-datatables -->
+    <link href="{% static 'css/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+    <!-- Date-picker -->
+    <link href="{% static 'css/date-picker.css" rel="stylesheet' %}">
+    <!-- Full calendar -->
+    <link href="{% static 'css/fullcalendar.min.css' %}" rel="stylesheet">   
+    <!-- MAIN STYLE SHEET -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">   
+
+</head>
+
+<body>
+    
+<!-- LOADING AREA START ===== -->
+<div class="loading-area">
+    <div class="loading-box"></div>
+    <div class="loading-pic">
+        <div class="cssload-wrap">
+            <div class="cssload-container">
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+            <span class="cssload-dots"></span>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- LOADING AREA  END ====== -->
+    
+	<div class="page-wraper">
+     
+    
+        <!-- CONTENT START -->
+        <div class="page-content">
+ 
+        
+            <!-- Search Bar Home START -->
+            <div class="aon-login-wrap d-flex">
+                 <div class="aon-login-left">
+                     <div class="aon-login-heading">
+                         <div class="aon-login-text">
+                             Your Trust is Our Greatest Incentive!
+                         </div>
+                         <div class="aon-login-pic">
+                             <img src="{% static 'images/banner2/doctor.png' %}" alt=""/>
+                         </div>
+                     </div>
+                </div>
+                 <div class="aon-login-right d-flex flex-wrap align-items-center">
+                     <div class="aon-login-area">
+                     <div class="col-md-12">
+                         <div class="site-logo login-sign-logo">
+                             <a href="{% url 'home' %}"><img src="{% static 'images/logo-dark.png' %}" alt=""/></a>
+                         </div>
+                     </div>
+                     <div class="col-md-12">
+                         <div class="login-sign-head">
+                             <strong>Welcome Back</strong>
+                             <span>Welcome back! Please enter your details.</span>
+                         </div>
+                     </div>                       
+                     
+                    <ul class="nav nav-pills mb-3 aon-custom-nav aon-login-sign-tabs calen-list-nav m-b30" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <div class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-one" role="tab" aria-selected="true">Login</div>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <div class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-two" role="tab" aria-selected="false">Register</div>
+                        </li>
+                    </ul>
+                    <div class="tab-content" >
+                        <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <form method="POST" action="{% url 'patient_login' %}" class="aon-login-form">
+
+                            {% csrf_token %}
+                            <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                <label>Username or Email</label>
+                                <div class="aon-inputicon-box">
+                                    <input class="form-control sf-form-control" name="username" type="text" placeholder="Enter your username or email" required>
+                                    <i class="aon-input-icon fa fa-user"></i>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                <label>Password</label>
+                                <div class="aon-inputicon-box">
+                                    <input class="form-control sf-form-control" name="password" type="password" placeholder="Enter your password" required>
+                                    <i class="aon-input-icon fa fa-lock"></i>
+                                </div>
+                                </div>
+                            </div>
+
+                            {% if messages %}
+                            <div class="col-md-12">
+                                {% for message in messages %}
+                                <p style="color: red;">{{ message }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <div class="col-md-12">
+                                <div class="form-group d-flex aon-login-option justify-content-between">
+                                <div class="aon-login-opleft">
+                                    <div class="checkbox sf-radio-checkbox">
+                                    <input id="keep_logged" name="remember_me" type="checkbox">
+                                    <label for="keep_logged">Keep me logged</label>
+                                    </div>
+                                </div>
+                                <div class="aon-login-opright">
+                                    <a href="#">Forget Password?</a>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <button type="submit" class="site-button w-100">Login <i class="feather-arrow-right"></i></button>
+                            </div>
+                            </div>
+                        </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-two" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <form method="POST" action="{% url 'patient_signup' %}" class="aon-login-form" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label>Full Name</label>
+                                    <div class="aon-inputicon-box">
+                                        <input class="form-control sf-form-control" name="name" type="text" placeholder="Full Name" required>
+                                        <i class="aon-input-icon fa fa-user"></i>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label>Email Address</label>
+                                    <div class="aon-inputicon-box">
+                                        <input class="form-control sf-form-control" name="email" type="email" placeholder="Email" required>
+                                        <i class="aon-input-icon fa fa-envelope-o"></i>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label>Username</label>
+                                    <div class="aon-inputicon-box">
+                                        <input class="form-control sf-form-control" name="username" type="text" placeholder="Choose a username" required>
+                                        <i class="aon-input-icon fa fa-user"></i>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <div class="aon-inputicon-box">
+                                        <input class="form-control sf-form-control" name="phone" type="text" placeholder="Phone Number">
+                                        <i class="aon-input-icon fa fa-phone"></i>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label>Password</label>
+                                    <div class="aon-inputicon-box">
+                                        <input class="form-control sf-form-control" name="password" type="password" placeholder="Password" required>
+                                        <i class="aon-input-icon fa fa-lock"></i>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <div class="aon-inputicon-box">
+                                        <input class="form-control sf-form-control" name="confirm_password" type="password" placeholder="Confirm Password" required>
+                                        <i class="aon-input-icon fa fa-lock"></i>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!--city and clinic code start-->
+                                <!--
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label>City</label>
+                                    <div class="aon-inputicon-box">
+                                        <select class="form-control sf-form-control" name="city" required>
+                                        <option value="">-- Select City --</option>
+                                        {% for city in cities %}
+                                            <option value="{{ city.id }}">{{ city.name }}</option>
+                                        {% endfor %}
+                                        </select>
+                                        <i class="aon-input-icon fa fa-map-marker"></i>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label>Clinic</label>
+                                    <div class="aon-inputicon-box">
+                                        <select class="form-control sf-form-control" name="clinic">
+                                        <option value="">-- Select Clinic --</option>
+                                        {% for clinic in clinics %}
+                                            <option value="{{ clinic.id }}">{{ clinic.name }}</option>
+                                        {% endfor %}
+                                        </select>
+                                        <i class="aon-input-icon fa fa-hospital-o"></i>
+                                    </div>
+                                    </div>
+                                </div>
+                                -->
+
+                                <!-- city and clinic code ene-->
+                                <div class="col-sm-12">
+                                    <div class="form-group sign-term-con">
+                                    <div class="checkbox sf-radio-checkbox">
+                                        <input id="td33" name="terms" type="checkbox" required>
+                                        <label for="td33">I've read and agree with your <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a></label>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                {% if messages %}
+                                <div class="col-sm-12">
+                                    {% for message in messages %}
+                                    <p style="color: red;">{{ message }}</p>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+
+                                <div class="col-sm-12">
+                                    <button type="submit" class="site-button w-100">Register <i class="feather-arrow-right"></i></button>
+                                </div>
+                                </div>
+                            </form>
+                            </div>
+
+                    </div>
+                    </div>
+                     
+                 </div>
+            </div>
+            <!-- Search Bar Home END --> 
+            
+            
+        </div>
+        <!-- CONTENT END -->
+
+
+ 	</div>
+
+    
+    
+<!-- JAVASCRIPT  FILES ========================================= --> 
+<script  src="{% static 'js/jquery-3.6.0.min.js' %}"></script><!-- JQUERY.MIN JS -->
+<script  src="{% static 'js/popper.min.js' %}"></script><!-- POPPER.MIN JS -->
+<script  src="{% static 'js/bootstrap.min.js' %}"></script><!-- BOOTSTRAP.MIN JS -->
+    
+<script  src="{% static 'js/jquery.bootstrap-touchspin.js' %}"></script><!-- FORM JS -->
+<script  src="{% static 'js/bootstrap-slider.min.js' %}"></script><!-- BOOTSTRAP Slider --> 
+<script  src="{% static 'js/magnific-popup.min.js' %}"></script><!-- MAGNIFIC-POPUP JS -->
+<script  src="{% static 'js/waypoints.min.js' %}"></script><!-- WAYPOINTS JS -->
+<script  src="{% static 'js/counterup.min.js' %}"></script><!-- COUNTERUP JS -->
+<script  src="{% static 'js/waypoints-sticky.min.js' %}"></script><!-- STICKY HEADER -->
+<script  src="{% static 'js/isotope.pkgd.min.js' %}"></script><!-- MASONRY  -->
+<script  src="{% static 'js/owl.carousel.min.js' %}"></script><!-- OWL  SLIDER  -->
+<script  src="{% static 'js/slick.min.js' %}"></script><!-- Slick SLIDER  -->
+<script  src="{% static 'js/theia-sticky-sidebar.js' %}"></script><!-- STICKY SIDEBAR  -->
+<script  src="{% static 'js/jquery.scrollbar.min.js' %}"></script><!-- MY ACCOUNT LEFT PANEL SCROLLER -->
+<script  src="{% static 'js/dropzone.js' %}"></script><!--IMAGE UPLOAD-->  
+<script  src="{% static 'js/bootstrap4-toggle.min.js' %}"></script><!-- BOOTSTRAP TOOGLE-->
+<script  src="{% static 'js/jquery.dataTables.min.js' %}"></script><!--DATA TABLE-->
+<script  src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script><!-- DATA TABLE-->
+<script  src="{% static 'js/lc_lightbox.lite.js' %}" ></script><!-- IMAGE POPUP -->
+<script  src="{% static 'js/datepicker.min.js' %}"></script><!-- DATEPICKER -->
+<script  src="{% static 'js/fullcalendar.min.js' %}"></script><!-- DATEPICKER -->
+<script src="{% static 'js/recaptcha-api.js' %}"></script><!-- RECAPTCHA-->
+<script  src="{% static 'js/custom.js' %}"></script><!-- CUSTOM FUCTIONS  -->
+
+
+
+
+</body>
+
+
+<!-- Mirrored from aonetheme.com/mfine/login-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2025 05:27:45 GMT -->
+</html>
+
+
+
+

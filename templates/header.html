@@ -44,87 +44,62 @@
                         </li>
                         <li class="has-child current-menu-item"><a href="{% url 'blog' %}">Blog</a>
                         </li>
-
-
-
-                        <!-- END EXTRA MENU CODE USE FOR FUTUTE-->
-                        <!--
-                        <li class="has-child"><a href="javascript:;">About us</a>
-                            <ul class="sub-menu">
-                                <li><a href="{% url 'about' %}">About Us 1</a></li>
-                                <li><a href="#">About Us 2</a></li>
-                            </ul>                                                                 
+                        <li class="has-child current-menu-item"><a href="{% url 'contact' %}">Contact Us</a>
                         </li>
-
-                        <li class="has-child">
-                            <a href="javascript:;">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Customer My Account</a></li>
-                                <li><a href="#">Lab Test</a></li>
-                                <li><a href="#">Medicine</a></li>
-                                <li><a href="#">Shop</a></li>
-                                <li><a href="#">Shop Detail</a></li>                                        
-                                <li><a href="#">Booking Form</a></li>
-                                <li><a href="#">404</a></li>
-                                <li><a href="#">Coming Soon</a></li>
-                            </ul>                                
-                        </li>
-
-                        <li class="has-child"><a href="javascript:;">Profile</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Profile 1</a></li>
-                                <li><a href="#">Profile 2</a></li>
-                            </ul>                                                                 
-                        </li>
-
-                        <li class="has-child"><a href="javascript:;">Blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Blog Grid</a></li>                                        
-                                <li><a href="#">Blog List</a></li>
-                                <li><a href="#">Blog Detail</a></li>                                        
-                            </ul>                                
-                        </li>
-
-                        <li class="has-child"><a href="javascript:;">Search</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Search List</a></li>
-                                <li><a href="#">Search List Map</a></li>                                        
-                                <li><a href="#">Search Grid View 1</a></li>
-                                <li><a href="#">Search Grid View 2</a></li>
-                                <li><a href="#">Search Grid Map</a></li>
-                                <li><a href="#">Search Grid Map 2</a></li>
-                            </ul>                                
-                        </li>
-
-                        <li class="has-child"><a href="javascript:;">Contact</a>
-                            <ul class="sub-menu">
-                                <li><a href="{% url 'contact' %}">Contact Us 1</a></li>                                        
-                                <li><a href="#">Contact Us 2</a></li>
-                            </ul>                                
-                        </li> 
-                        -->
-                        <!-- END EXTRA MENU CODE USE FOR FUTUTE-->
-
 
 
                     </ul>
                 </div>
                         
                 <!-- Header Right Section-->
-                <div class="extra-nav header-2-nav">
-                    <div class="extra-cell">
+                
+                    <div class="extra-nav header-2-nav">
+                       <div class="extra-cell">
 
-                        <!--Sign up-->
-                        <a href="{% url 'doctor_login' %}" class="site-button-link aon-btn-signup m-l20">
-                            <i class="feather-user"></i> Patient Login/Signup
-                        </a>
+                            {% if request.user.is_authenticated %}
 
-                        <!--Add Listing-->
-                        <a href="{% url 'doctor_login' %}" class="site-button aon-add-listing m-l20">
-                            <i class="feather-plus-circle"></i> Join as a Doctor
-                        </a>
+                                {# Check if logged in user is Doctor #}
+                                {% if request.user.doctor %}
+                                    <a href="{% url 'doctor_dashboard' %}" class="site-button-link aon-btn-signup m-l20">
+                                        <i class="feather-user"></i> Doctor Dashboard
+                                    </a>
+
+                                {#  Check if logged in user is Patient #}
+                                {% elif request.user.patient_profile %}
+                                    <a href="{% url 'patient_dashboard' %}" class="site-button-link aon-btn-signup m-l20">
+                                        <i class="feather-user"></i> Patient Dashboard
+                                    </a>
+
+                                {% else %}
+                                    <a href="{% url 'doctor_dashboard' %}" class="site-button-link aon-btn-signup m-l20">
+                                        <i class="feather-user"></i> Doctor Dashboard
+                                    </a>
+                                {% endif %}
+
+                                {#  Common Logout #}
+                                <a href="{% url 'patient_logout' %}" class="site-button aon-add-listing m-l20">
+                                    <i class="feather-log-out"></i> Logout
+                                </a>
+
+                            {% else %}
+                                {#  When user is not logged in #}
+                                <a href="{% url 'patient_login' %}" class="site-button-link aon-btn-signup m-l20">
+                                    <i class="feather-user"></i> Patient Login / Signup
+                                </a>
+
+                                <a href="{% url 'doctor_login' %}" class="site-button aon-add-listing m-l20">
+                                    <i class="feather-plus-circle"></i> Join as a Doctor
+                                </a>
+                            {% endif %}
+
+                        </div>
+
+
+                        
+
                     </div>
-                </div>                            
+
+                <!-- end Header Right Section-->         
 
             </div>    
         </div>

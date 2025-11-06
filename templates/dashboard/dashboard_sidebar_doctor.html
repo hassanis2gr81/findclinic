@@ -1,0 +1,23 @@
+{% load static %}
+
+{% block sidebar %}
+<nav id="sidebar-admin-wraper">
+    <div class="my-account-logo">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'images/logo-dark.png' %}" alt="">
+        </a>
+    </div>
+
+
+
+    <div class="admin-nav scrollbar-inner">
+        <ul>
+            <li class="active"><a href="{% url 'doctor_reports' %}"><i class="fa fa-file"></i> Reports</a></li>
+            <li><a href="{% url 'doctor_schedule' %}"><i class="fa fa-calendar"></i> Schedule</a></li>
+            <li><a href="{% url 'doctor_patients' %}"><i class="fa fa-users"></i> Patients</a></li>
+        </ul>
+    </div>
+   
+
+</nav>
+{% endblock %}

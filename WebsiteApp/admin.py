@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from .models import City, Clinic, Category, Address, Service, Doctor, DoctorClinic,Blog
+from .models import City, Clinic, Category, Address, Service, Doctor, DoctorClinic, Blog, Testimonial, BlogCategory,PatientProfile
 
 # --------------------
 # City Admin
@@ -61,12 +61,11 @@ class DoctorClinicInline(admin.TabularInline):
     extra = 1
     autocomplete_fields = ['clinic']
     fields = ('clinic', 'days', 'start_time', 'end_time')
-    show_change_link = True  # allows editing existing records
+    show_change_link = True
     verbose_name = "Clinic Schedule"
     verbose_name_plural = "Clinic Schedules"
 
     def save_new_instance(self, form, commit=True):
-        # ensure the instance is saved correctly to the doctor
         instance = form.save(commit=False)
         if commit:
             instance.save()
@@ -84,20 +83,14 @@ class DoctorForm(forms.ModelForm):
     class Media:
         css = {
             'all': (
-                # Select2 CSS
                 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
-                # Flatpickr CSS (time picker)
                 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css',
             )
         }
         js = (
-            # jQuery (Django admin already has it but safe to include CDN fallback)
             'https://code.jquery.com/jquery-3.6.0.min.js',
-            # Select2
             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
-            # Flatpickr
             'https://cdn.jsdelivr.net/npm/flatpickr',
-            # Your custom admin JS (must be at static/admin/js/doctor_city_clinic.js)
             'admin/js/doctor_city_clinic.js',
         )
 
@@ -118,23 +111,48 @@ class DoctorAdmin(admin.ModelAdmin):
     inlines = [DoctorClinicInline]
 
     def save_formset(self, request, form, formset, change):
-        """
-        Ensure DoctorClinic relationships persist properly.
-        """
         instances = formset.save(commit=False)
         for instance in instances:
-            instance.doctor = form.instance  # reattach doctor explicitly
+            instance.doctor = form.instance
             instance.save()
-        formset.save_m2m()  # Save M2M fields
+        formset.save_m2m()
 
 
 # --------------------
-# Blog admin
+# Blog Admin
 # --------------------
-
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'created_at', 'is_published')
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ('title', 'author')
     list_filter = ('is_published', 'created_at')
+
+
+# --------------------
+# Blog Category Admin
+# --------------------
+@admin.register(BlogCategory)
+class BlogCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'created_at')
+    prepopulated_fields = {'slug': ('name',)}
+    search_fields = ('name',)
+    list_filter = ('created_at',)
+
+
+# --------------------
+# Testimonial Admin
+# --------------------
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ('name', 'position', 'created_at')
+    search_fields = ('name', 'position', 'message')
+
+
+# --------------------
+# Pateint Admin
+# --------------------
+@admin.register(PatientProfile)
+class PatientProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'name', 'phone', 'created_at')
+    search_fields = ('user__email','name','phone')

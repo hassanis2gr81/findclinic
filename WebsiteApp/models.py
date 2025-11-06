@@ -3,6 +3,9 @@ from django.utils.text import slugify
 from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 # =====================
 # ✅ City Model
@@ -23,7 +26,7 @@ class City(models.Model):
 
 
 # =====================
-# ✅ Category Model
+# ✅ Doctor Category Model
 # =====================
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -108,7 +111,7 @@ class Doctor(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     rating = models.PositiveSmallIntegerField(default=0)
     reviews = models.PositiveIntegerField(default=0)
-
+    is_verified = models.BooleanField(default=False)
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
@@ -141,10 +144,28 @@ class DoctorClinic(models.Model):
     def __str__(self):
         return f"{self.doctor.name} at {self.clinic.name} ({self.days or 'No days'})"
 
-# =====================
-# ✅ For Blog post model
-# ===================== 
 
+# =====================
+# ✅ Blog Category Model (Fixed)
+# =====================
+class BlogCategory(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)  
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+
+# =====================
+# ✅ Blog Model
+# =====================
 class Blog(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
@@ -155,6 +176,7 @@ class Blog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
+    category = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null=True, blank=True, related_name='blogs')
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -164,3 +186,44 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
+
+# =====================
+# ✅ Testimonial Model
+# =====================
+class Testimonial(models.Model):
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100, blank=True, null=True)
+    message = models.TextField()
+    image = models.ImageField(upload_to='testimonials/', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
+
+
+# =====================
+# ✅ Patient Profile Model
+# =====================
+class PatientProfile(models.Model):
+    name = models.CharField(max_length=100)
+    user = models.OneToOneField('auth.User', on_delete=models.CASCADE, related_name='patient_profile')
+    
+    phone = models.CharField(max_length=30, blank=True, null=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name or (self.user.email if self.user else "Patient")
+    
+#Add dynamic properties to User model
+def is_doctor(self):
+    return hasattr(self, 'doctor')
+
+def is_patient(self):
+    return hasattr(self, 'patient_profile')
+
+User.add_to_class("is_doctor", is_doctor)
+User.add_to_class("is_patient", is_patient)

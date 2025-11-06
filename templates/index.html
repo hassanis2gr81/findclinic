@@ -827,43 +827,42 @@
         
         <!-- Testimonial Section -->
 		<div class="aon-med-testimonial-area sf-curve-pos">
-			<div class="container">
-				<!--Title Section Start-->
+            <div class="container">
+                <!-- Title Section Start -->
                 <div class="section-head center">
                     <span class="aon-sub-title">Testimonials</span>
                     <h2 class="aon-title">What People Say</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry the standard dummy text ever since the  when an printer took.</p>
+                    <p>Here’s what our users and clients say about their experience with FindClinic.</p>
                 </div>
-                <!--Title Section End-->
-			
+                <!-- Title Section End -->
 
-				<div class="section-content">
+                <div class="section-content">
                     <div class="aon-testimonial-contaent-wrap">
                         <div class="aon-testimonial-left">
-                            <span class="circle-pic-l-3 animate-v2"><img src="{% static 'images/testimonial-img/img3.html' %}" alt=""></span>
-                            <span class="circle-pic-l-1 animate-v3"><img src="{% static 'images/testimonial-img/img1.html' %}" alt=""></span>
-                            <span class="circle-pic-l-2 animate-v2"><img src="{% static 'images/testimonial-img/img2.html' %}" alt=""></span>
+                            <span class="circle-pic-l-3 animate-v2"><img src="{% static 'images/testimonial-img/r-img3.png' %}" alt=""></span>
+                            <span class="circle-pic-l-1 animate-v3"><img src="{% static 'images/testimonial-img/r-img1.png' %}" alt=""></span>
+                            <span class="circle-pic-l-2 animate-v2"><img src="{% static 'images/testimonial-img/r-img2.png' %}" alt=""></span>
                             <span class="circle-pic-l-4 animate-v3"></span>
                         </div>
+
                         <div class="aon-med-testimonial-mid">
                             <div class="owl-carousel aon-med-testimonial aon-owl-arrow">
-
-                                <!-- COLUMNS 1 -->
+                                {% for t in testimonials %}
                                 <div class="item">
-                                    
                                     <div class="aon-med-testimonial-1 text-center">
-                                        
                                         <div class="aon-testimonial-quote"><i class="fa fa-plus"></i></div>
-                                        <p>Best service are provide us. simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make specimen</p>
-                                        
-                                        <div class="aon-testimonial-name">Maretin Chua</div>
-                                        <div class="aon-testimonial-position">Designer</div>
+                                        <p>{{ t.message }}</p>
+                                        {% if t.image %}
+                                            <img src="{{ t.image.url }}" alt="{{ t.name }}" class="rounded-circle mb-3" width="80" height="80">
+                                        {% endif %}
+                                        <div class="aon-testimonial-name">{{ t.name }}</div>
+                                        <div class="aon-testimonial-position">{{ t.position }}</div>
                                     </div>
-                                
                                 </div>
-                                
+                                {% endfor %}
                             </div>
                         </div>
+
                         <div class="aon-testimonial-right">
                             <span class="circle-pic-r-3 animate-v2"><img src="{% static 'images/testimonial-img/r-img3.png' %}" alt=""></span>
                             <span class="circle-pic-r-1 animate-v2"><img src="{% static 'images/testimonial-img/r-img1.png' %}" alt=""></span>
@@ -871,11 +870,10 @@
                             <span class="circle-pic-r-4 animate-v2"></span>
                         </div>
                     </div>
-                    
-				</div>
+                </div>
+            </div>
+        </div>
 
-			</div>
-		</div>
 		<!-- Testimonial Section End -->
            
         <!--star product section-->
@@ -899,121 +897,50 @@
                 <!--Title Section End-->
                 
 
-                <div class="section-content">
-                    <div class="aon-med-blog-section">
-                        <div class="row d-flex justify-content-center">
-                            <!-- COLUMNS 1 -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="aon-med-blog-style-1 shine-hover">
-                                    <div class="post-bx">
-                                        <!-- Content section for blogs start -->
-                                        <div class="post-thum shine-box"> 
-                                            <img title="title" alt="" src="images/blog/blog-grid/1.html">
-                                        </div>
-                                        <div class="post-info">
-
-                                            <div class="post-date">
-                                                <span class="date-dd">18</span>
-                                                <span>Aug</span>
-                                                <span>2022</span>
-                                            </div> 
-
-                                            <div class="post-meta">
-                                                <ul>
-                                                    <li class="post-author"><i class="feather-user"></i> By <a href="#">Admin</a></li>
-                                                    <li class="post-comment"><i class="feather-message-square"></i> 8 Comment</li>
-                                                </ul>
+                <!-- Home: Recent 5 blog posts -->
+                    <div class="section-content">
+                        <div class="aon-med-blog-section">
+                            <div class="row d-flex justify-content-center">
+                                {% for blog in blogs %}
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="aon-med-blog-style-1 shine-hover">
+                                        <div class="post-bx">
+                                            <div class="post-thum shine-box">
+                                                {% if blog.image %}
+                                                    <img title="{{ blog.title }}" alt="{{ blog.title }}" src="{{ blog.image.url }}">
+                                                {% else %}
+                                                    <img title="{{ blog.title }}" alt="{{ blog.title }}" src="{% static 'images/default-blog.jpg' %}">
+                                                {% endif %}
                                             </div>
-
-                                            <div class="post-text">
-                                                <h4 class="post-title">
-                                                    <a href="blog-detail.html">Medical Technology Innovation Center Training Center</a>
-                                                </h4>
-                                                <p>New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.</p>
-                                                <a href="blog-detail.html" class="site-btn-link">Read More</a>
+                                            <div class="post-info">
+                                                <div class="post-date">
+                                                    <span class="date-dd">{{ blog.created_at|date:"d" }}</span>
+                                                    <span>{{ blog.created_at|date:"M" }}</span>
+                                                    <span>{{ blog.created_at|date:"Y" }}</span>
+                                                </div>
+                                                <div class="post-meta">
+                                                    <ul>
+                                                        <li class="post-author"><i class="feather-user"></i> By <a href="#">{{ blog.author|default:"Admin" }}</a></li>
+                                                        <li class="post-comment"><i class="feather-message-square"></i> {{ blog.comments_count|default:"0" }} Comment</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="post-text">
+                                                    <h4 class="post-title">
+                                                        <a href="{% url 'blog_detail' blog.slug %}">{{ blog.title }}</a>
+                                                    </h4>
+                                                    <p>{{ blog.content|striptags|truncatewords:18 }}</p>
+                                                    <a href="{% url 'blog_detail' blog.slug %}" class="site-btn-link">Read More</a>
+                                                </div>
                                             </div>
-
                                         </div>
-                                        <!-- Content section for blogs end -->
                                     </div>
                                 </div>
+                                {% endfor %}
                             </div>
-                            <!-- COLUMNS 2 -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="aon-med-blog-style-1 shine-hover">
-                                    <div class="post-bx">
-                                        <!-- Content section for blogs start -->
-                                        <div class="post-thum shine-box"> 
-                                            <img title="title" alt="" src="images/blog/blog-grid/2.html">
-                                        </div>
-                                        <div class="post-info">
-
-                                            <div class="post-date">
-                                                <span class="date-dd">18</span>
-                                                <span>Aug</span>
-                                                <span>2022</span>
-                                            </div> 
-
-                                            <div class="post-meta">
-                                                <ul>
-                                                    <li class="post-author"><i class="feather-user"></i> By <a href="#">Admin</a></li>
-                                                    <li class="post-comment"><i class="feather-message-square"></i> 8 Comment</li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="post-text">
-                                                <h4 class="post-title">
-                                                    <a href="blog-detail.html">Benefiting from healthcare shouldn’t be a matter of luck.</a>
-                                                </h4>
-                                                <p>New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.</p>
-                                                <a href="blog-detail.html" class="site-btn-link">Read More</a>
-                                            </div>
-
-                                        </div>
-                                        <!-- Content section for blogs end -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- COLUMNS 3 -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="aon-med-blog-style-1 shine-hover">
-                                    <div class="post-bx">
-                                        <!-- Content section for blogs start -->
-                                        <div class="post-thum shine-box"> 
-                                            <img title="title" alt="" src="images/blog/blog-grid/3.html">
-                                        </div>
-                                        <div class="post-info">
-
-                                            <div class="post-date">
-                                                <span class="date-dd">18</span>
-                                                <span>Aug</span>
-                                                <span>2022</span>
-                                            </div> 
-
-                                            <div class="post-meta">
-                                                <ul>
-                                                    <li class="post-author"><i class="feather-user"></i> By <a href="#">Admin</a></li>
-                                                    <li class="post-comment"><i class="feather-message-square"></i> 8 Comment</li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="post-text">
-                                                <h4 class="post-title">
-                                                    <a href="blog-detail.html">Caring for the whole patient, not just your symptoms</a>
-                                                </h4>
-                                                <p>New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.</p>
-                                                <a href="blog-detail.html" class="site-btn-link">Read More</a>
-                                            </div>
-
-                                        </div>
-                                        <!-- Content section for blogs end -->
-                                    </div>
-                                </div>
-                            </div>
-                            
                         </div>
                     </div>
-                </div>
+
+
 
             </div>
         </section>
