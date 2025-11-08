@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <!-- HEADER START -->
 <header class="site-header header-style-1 mobile-sider-drawer-menu header-full-width">
     <div class="sticky-header main-bar-wraper navbar-expand-lg">
@@ -39,66 +38,64 @@
                                 {% endfor %}
                             </ul>
                         </li>
-                        </li>
                         <li class="has-child current-menu-item"><a href="{% url 'clinic' %}">Clinic</a>
                         </li>
                         <li class="has-child current-menu-item"><a href="{% url 'blog' %}">Blog</a>
                         </li>
                         <li class="has-child current-menu-item"><a href="{% url 'contact' %}">Contact Us</a>
                         </li>
-
-
                     </ul>
                 </div>
                         
                 <!-- Header Right Section-->
-                
-                    <div class="extra-nav header-2-nav">
-                       <div class="extra-cell">
+                <div class="extra-nav header-2-nav">
+                    <div class="extra-cell">
 
-                            {% if request.user.is_authenticated %}
+                        {% if request.user.is_authenticated %}
 
-                                {# Check if logged in user is Doctor #}
-                                {% if request.user.doctor %}
-                                    <a href="{% url 'doctor_dashboard' %}" class="site-button-link aon-btn-signup m-l20">
-                                        <i class="feather-user"></i> Doctor Dashboard
-                                    </a>
+                            {# Check if logged in user is Doctor #}
+                            {% if request.user.is_doctor %}
+                                <a href="{% url 'doctor_dashboard' %}" class="site-button-link aon-btn-signup m-l20">
+                                    <i class="feather-user"></i> Doctor Dashboard
+                                </a>
+                                {# Doctor Logout #}
+                                <a href="{% url 'doctor_logout' %}" class="site-button aon-add-listing m-l20">
+                                    <i class="feather-log-out"></i> Logout
+                                </a>
 
-                                {#  Check if logged in user is Patient #}
-                                {% elif request.user.patient_profile %}
-                                    <a href="{% url 'patient_dashboard' %}" class="site-button-link aon-btn-signup m-l20">
-                                        <i class="feather-user"></i> Patient Dashboard
-                                    </a>
-
-                                {% else %}
-                                    <a href="{% url 'doctor_dashboard' %}" class="site-button-link aon-btn-signup m-l20">
-                                        <i class="feather-user"></i> Doctor Dashboard
-                                    </a>
-                                {% endif %}
-
-                                {#  Common Logout #}
+                            {# Check if logged in user is Patient #}
+                            {% elif request.user.is_patient %}
+                                <a href="{% url 'patient_dashboard' %}" class="site-button-link aon-btn-signup m-l20">
+                                    <i class="feather-user"></i> Patient Dashboard
+                                </a>
+                                {# Patient Logout #}
                                 <a href="{% url 'patient_logout' %}" class="site-button aon-add-listing m-l20">
                                     <i class="feather-log-out"></i> Logout
                                 </a>
 
                             {% else %}
-                                {#  When user is not logged in #}
-                                <a href="{% url 'patient_login' %}" class="site-button-link aon-btn-signup m-l20">
-                                    <i class="feather-user"></i> Patient Login / Signup
+                                {# Default if user type not determined #}
+                                <a href="{% url 'home' %}" class="site-button-link aon-btn-signup m-l20">
+                                    <i class="feather-user"></i> Dashboard
                                 </a>
-
-                                <a href="{% url 'doctor_login' %}" class="site-button aon-add-listing m-l20">
-                                    <i class="feather-plus-circle"></i> Join as a Doctor
+                                <a href="{% url 'patient_logout' %}" class="site-button aon-add-listing m-l20">
+                                    <i class="feather-log-out"></i> Logout
                                 </a>
                             {% endif %}
 
-                        </div>
+                        {% else %}
+                            {# When user is not logged in #}
+                            <a href="{% url 'patient_login' %}" class="site-button-link aon-btn-signup m-l20">
+                                <i class="feather-user"></i> Patient Login / Signup
+                            </a>
 
-
-                        
+                            <a href="{% url 'doctor_login' %}" class="site-button aon-add-listing m-l20">
+                                <i class="feather-plus-circle"></i> Join as a Doctor
+                            </a>
+                        {% endif %}
 
                     </div>
-
+                </div>
                 <!-- end Header Right Section-->         
 
             </div>    

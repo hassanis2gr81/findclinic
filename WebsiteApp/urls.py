@@ -6,6 +6,8 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
 
+    path('add-listing/', views.add_listing, name='add_listing'),
+
     # ---------------- Doctor Auth ----------------
     path('doctor_login/', views.doctor_login, name='doctor_login'),
     path('doctor_signup/', views.doctor_signup, name='doctor_signup'),
@@ -16,6 +18,7 @@ urlpatterns = [
     path('doctor/reports/', views.doctor_reports, name='doctor_reports'),
     path('doctor/schedule/', views.doctor_schedule, name='doctor_schedule'),
     path('doctor/patients/', views.doctor_patients, name='doctor_patients'),
+    path('doctor-add-info/', views.doctor_add_info, name='doctor_add_info'),
 
 
     # ---------------- Patient Auth ----------------

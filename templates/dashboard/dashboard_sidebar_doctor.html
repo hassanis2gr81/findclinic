@@ -8,16 +8,65 @@
         </a>
     </div>
 
-
-
     <div class="admin-nav scrollbar-inner">
         <ul>
             <li class="active"><a href="{% url 'doctor_reports' %}"><i class="fa fa-file"></i> Reports</a></li>
             <li><a href="{% url 'doctor_schedule' %}"><i class="fa fa-calendar"></i> Schedule</a></li>
             <li><a href="{% url 'doctor_patients' %}"><i class="fa fa-users"></i> Patients</a></li>
+            <!-- Add Info link ko navigation mein bhi add kiya -->
+            <li><a href="{% url 'doctor_add_info' %}"><i class="fa fa-user-edit"></i> Add Info</a></li>
         </ul>
     </div>
-   
-
+    
+    <div class="admin-logout-area">
+        <div class="pro-pic-info-wrap d-flex">
+            <div class="pro-log-left d-flex">
+                <div class="pro-pic-box">
+                    {% if user.is_authenticated and user.is_doctor %}
+                        <!-- Doctor ki profile picture -->
+                        {% if user.doctor.image and user.doctor.image.url %}
+                            <img src="{{ user.doctor.image.url }}" alt="{{ user.doctor.name }}">
+                        {% else %}
+                            <img src="{% static 'images/doctor-default.png' %}" alt="Doctor">
+                        {% endif %}
+                    {% else %}
+                        <!-- Agar koi doctor nahi login hai toh default -->
+                        <img src="{% static 'images/user.png' %}" alt="User">
+                    {% endif %}
+                </div>
+                <div class="pro-pic-info">
+                    <strong>
+                        {% if user.is_authenticated and user.is_doctor %}
+                            Dr. {{ user.doctor.name }}
+                        {% else %}
+                            Doctor Panel
+                        {% endif %}
+                    </strong>
+                    
+                    {% if user.is_authenticated and user.is_doctor %}
+                        <br><small>{{ user.doctor.specialization }}</small>
+                        
+                        <!-- ✅ YEH NAYA LINK ADD KIYA HAI -->
+                        <div class="add-info-link" style="margin-top: 5px;">
+                            <a href="{% url 'doctor_add_info' %}" style="color: #007bff; font-size: 12px; text-decoration: none;">
+                                <i class="fa fa-edit" style="margin-right: 4px;"></i>Add/Update Info
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="pro-log-right d-flex">
+                <span class="feather-icon has-toltip">
+                    {% if user.is_authenticated and user.is_doctor %}
+                        <a href="{% url 'doctor_logout' %}"><i class="feather-power"></i></a>
+                        <span class="header-toltip">Logout</span>
+                    {% else %}
+                        <a href="{% url 'doctor_login' %}"><i class="feather-power"></i></a>
+                        <span class="header-toltip">Doctor Login</span>
+                    {% endif %}
+                </span>
+            </div>    
+        </div>
+    </div>
 </nav>
 {% endblock %}

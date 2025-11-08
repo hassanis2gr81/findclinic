@@ -1,4 +1,4 @@
-
+{% load static%}
 
 <div id="header-admin">
                 <div class="container">
@@ -90,6 +90,9 @@
                                     </div>
                                 </div>
                             </li>
+
+                            <!--hide langugae start-->
+                            <!--
                             <li class="header-widget has-toltip">
                                 <div class="aon-admin-messange sf-toogle-btn">
                                     <i class="feather-globe"></i>
@@ -106,19 +109,102 @@
                                     </ul>
                                 </div>
                             </li>
+                            -->
+                            <!--hide langugae start-->
+
                             <li class="header-widget">
                                 <div class="aon-admin-messange sf-toogle-btn">
-                                    <span class="feather-user-pic"><img src="images/user.html" alt=""/></span>
+                                    {% if user.is_authenticated %}
+                                        {% if user.is_doctor %}
+                                            <!-- Doctor ki profile picture -->
+                                            <span class="feather-user-pic">
+                                                {% if user.doctor.image and user.doctor.image.url %}
+                                                    <img src="{{ user.doctor.image.url }}" alt="{{ user.doctor.name }}"/>
+                                                {% else %}
+                                                    <img src="{% static 'images/doctor-default.png' %}" alt="Doctor"/>
+                                                {% endif %}
+                                            </span>
+                                        {% elif user.is_patient %}
+                                            <!-- Patient ki profile picture -->
+                                            <span class="feather-user-pic">
+                                                {% if user.patient_profile.image and user.patient_profile.image.url %}
+                                                    <img src="{{ user.patient_profile.image.url }}" alt="{{ user.patient_profile.name }}"/>
+                                                {% else %}
+                                                    <img src="{% static 'images/patient-default.png' %}" alt="Patient"/>
+                                                {% endif %}
+                                            </span>
+                                        {% else %}
+                                            <!-- Default user (agar na doctor na patient) -->
+                                            <span class="feather-user-pic">
+                                                <img src="{% static 'images/user.png' %}" alt="User"/>
+                                            </span>
+                                        {% endif %}
+                                    {% else %}
+                                        <!-- Guest user (login nahi kiya) -->
+                                        <span class="feather-user-pic">
+                                            <img src="{% static 'images/user.png' %}" alt="Guest"/>
+                                        </span>
+                                    {% endif %}
                                 </div>
+
                                 <div class="ws-toggle-popup popup-tabs-wrap-section user-welcome-area">
                                     <div class="popup-tabs-head d-flex justify-content-between align-items-center">
-                                        <div class="popup-tabHead-left"><h5 class="m-a0">David Wood</h5></div>
+                                        <div class="popup-tabHead-left">
+                                            <h5 class="m-a0">
+                                                {% if user.is_authenticated %}
+                                                    {% if user.is_doctor %}
+                                                        {{ user.doctor.name }}
+                                                    {% elif user.is_patient %}
+                                                        {{ user.patient_profile.name }}
+                                                    {% else %}
+                                                        {{ user.username }}
+                                                    {% endif %}
+                                                {% else %}
+                                                    Guest User
+                                                {% endif %}
+                                            </h5>
+                                        </div>
                                     </div>
+                                    
                                     <ul class="user-welcome-list">
-                                        <li><a href="#"><i class="feather-sliders"></i> Dashboard</a></li>
-                                        <li><a href="#"><i class="feather-file"></i> Add Listing</a></li>
-                                        <li><a href="#"><i class="feather-settings"></i> Setting</a></li>
-                                        <li><a href="#"><i class="feather-log-out"></i> Log Out</a></li>
+                                        <!-- Dashboard Link -->
+                                        <li>
+                                            {% if user.is_authenticated %}
+                                                {% if user.is_doctor %}
+                                                    <a href="{% url 'doctor_dashboard' %}"><i class="feather-sliders"></i> Dashboard</a>
+                                                {% elif user.is_patient %}
+                                                    <a href="{% url 'patient_dashboard' %}"><i class="feather-sliders"></i> Dashboard</a>
+                                                {% else %}
+                                                    <a href="{% url 'home' %}"><i class="feather-sliders"></i> Dashboard</a>
+                                                {% endif %}
+                                            {% else %}
+                                                <a href="{% url 'patient_login' %}"><i class="feather-sliders"></i> Dashboard</a>
+                                            {% endif %}
+                                        </li>
+
+                                        <!-- Add Listing Link - Doctor ke liye hi show hoga -->
+                                        <li>
+                                            {% if user.is_authenticated and user.is_doctor %}
+                                                <a href="{% url 'add_listing' %}"><i class="feather-file"></i> Add Listing</a>
+                                            {% elif user.is_authenticated and user.is_patient %}
+                                                <a href="{% url 'add_listing' %}"><i class="feather-file"></i> Add Profile</a>
+                                            {% else %}
+                                                <a href="{% url 'doctor_signup' %}"><i class="feather-file"></i> Join as Doctor</a>
+                                            {% endif %}
+                                        </li>
+
+                                        <!-- Logout Link -->
+                                        <li>
+                                            {% if user.is_authenticated %}
+                                                {% if user.is_doctor %}
+                                                    <a href="{% url 'doctor_logout' %}"><i class="feather-log-out"></i> Log Out</a>
+                                                {% else %}
+                                                    <a href="{% url 'patient_logout' %}"><i class="feather-log-out"></i> Log Out</a>
+                                                {% endif %}
+                                            {% else %}
+                                                <a href="{% url 'patient_login' %}"><i class="feather-log-in"></i> Login</a>
+                                            {% endif %}
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

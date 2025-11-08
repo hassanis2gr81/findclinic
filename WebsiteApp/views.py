@@ -213,7 +213,8 @@ def doctor_signup(request):
 @login_required(login_url='doctor_login')
 def doctor_dashboard(request):
     if not hasattr(request.user, 'doctor'):
-        return redirect('patient_dashboard')
+        messages.error(request, 'Doctor account required to access this page.')
+        return redirect('home')  # ✅ FIXED: Redirect to home instead of patient_dashboard
     doctor = request.user.doctor
     return render(request, 'dashboard/dashboard_doctor.html', {'doctor': doctor})
 
@@ -221,7 +222,8 @@ def doctor_dashboard(request):
 @login_required(login_url='doctor_login')
 def doctor_profile_edit(request):
     if not hasattr(request.user, 'doctor'):
-        return redirect('patient_dashboard')
+        messages.error(request, 'Doctor account required to access this page.')
+        return redirect('home')  # ✅ FIXED
 
     doctor = request.user.doctor
     if request.method == 'POST':
@@ -240,7 +242,8 @@ def doctor_profile_edit(request):
 @login_required(login_url='doctor_login')
 def doctor_clinic_add(request):
     if not hasattr(request.user, 'doctor'):
-        return redirect('patient_dashboard')
+        messages.error(request, 'Doctor account required to access this page.')
+        return redirect('home')  # ✅ FIXED
 
     cities = City.objects.all()
     clinics = Clinic.objects.all()
@@ -268,7 +271,8 @@ def doctor_logout(request):
 def doctor_schedule(request):
     # Only allow doctors to access
     if not hasattr(request.user, 'doctor'):
-        return redirect('patient_dashboard')
+        messages.error(request, 'Doctor account required to access this page.')
+        return redirect('home')  # ✅ FIXED
     return render(request, 'dashboard/doctor_schedule.html')
 
 #doctor_reports k liye
@@ -276,7 +280,8 @@ def doctor_schedule(request):
 def doctor_reports(request):
     # Only allow doctors to access
     if not hasattr(request.user, 'doctor'):
-        return redirect('patient_dashboard')
+        messages.error(request, 'Doctor account required to access this page.')
+        return redirect('home')  # ✅ FIXED
     return render(request, 'dashboard/doctor_reports.html')
 
 #doctor_patients k liye
@@ -284,7 +289,8 @@ def doctor_reports(request):
 def doctor_patients(request):
     # Only allow doctors to access
     if not hasattr(request.user, 'doctor'):
-        return redirect('patient_dashboard')
+        messages.error(request, 'Doctor account required to access this page.')
+        return redirect('home')  # ✅ FIXED
     return render(request, 'dashboard/doctor_patients.html')
 
 
@@ -340,7 +346,8 @@ def patient_signup(request):
 @login_required(login_url='patient_login')
 def patient_dashboard(request):
     if not hasattr(request.user, 'patient_profile'):
-        return redirect('doctor_dashboard')
+        messages.error(request, 'Patient account required to access this page.')
+        return redirect('home')  # ✅ FIXED: Redirect to home instead of doctor_dashboard
     profile = request.user.patient_profile
     return render(request, 'dashboard/dashboard_patient.html', {'profile': profile})
 
@@ -348,21 +355,24 @@ def patient_dashboard(request):
 @login_required(login_url='patient_login')
 def patient_appointments(request):
     if not hasattr(request.user, 'patient_profile'):
-        return redirect('doctor_dashboard')
+        messages.error(request, 'Patient account required to access this page.')
+        return redirect('home')  # ✅ FIXED
     return render(request, 'dashboard/patient_appointments.html')
 
 
 @login_required(login_url='patient_login')
 def patient_records(request):
     if not hasattr(request.user, 'patient_profile'):
-        return redirect('doctor_dashboard')
+        messages.error(request, 'Patient account required to access this page.')
+        return redirect('home')  # ✅ FIXED
     return render(request, 'dashboard/patient_records.html')
 
 
 @login_required(login_url='patient_login')
 def patient_reports(request):
     if not hasattr(request.user, 'patient_profile'):
-        return redirect('doctor_dashboard')
+        messages.error(request, 'Patient account required to access this page.')
+        return redirect('home')  # ✅ FIXED
     return render(request, 'dashboard/patient_reports.html')
 
 
@@ -370,3 +380,44 @@ def patient_logout(request):
     logout(request)
     return redirect('patient_login')
 
+@login_required
+def login_redirect(request):
+    if hasattr(request.user, 'doctor'):
+        return redirect('doctor_dashboard')
+    elif hasattr(request.user, 'patient_profile'):
+        return redirect('patient_dashboard')
+    else:
+        return redirect('home')
+    
+
+@login_required(login_url='doctor_login')
+def doctor_add_info(request):
+    if not hasattr(request.user, 'doctor'):
+        messages.error(request, 'Doctor account required to access this page.')
+        return redirect('home')
+    
+    doctor = request.user.doctor
+    
+    if request.method == 'POST':
+        try:
+            # Update basic information
+            doctor.name = request.POST.get('name', doctor.name)
+            doctor.specialization = request.POST.get('specialization', doctor.specialization)
+            doctor.qualification = request.POST.get('qualification', doctor.qualification)
+            doctor.phone = request.POST.get('phone', doctor.phone)
+            doctor.email = request.POST.get('email', doctor.email)
+            doctor.experience_years = request.POST.get('experience_years', doctor.experience_years)
+            doctor.description = request.POST.get('description', doctor.description)
+            
+            # Update image if provided
+            if 'image' in request.FILES:
+                doctor.image = request.FILES['image']
+            
+            doctor.save()
+            messages.success(request, 'Profile updated successfully!')
+            return redirect('doctor_dashboard')
+            
+        except Exception as e:
+            messages.error(request, f'Error updating profile: {str(e)}')
+    
+    return render(request, 'dashboard/doctor_add_info.html', {'doctor': doctor})
